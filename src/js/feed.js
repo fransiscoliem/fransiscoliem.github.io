@@ -104,7 +104,7 @@ function createCards(data){
   componentHandler.upgradeElement(cardWrapper);
   sharedMomentsArea.appendChild(cardWrapper);
   if(count++ >= 15)
-    break;
+    return;
 });
 }
 
