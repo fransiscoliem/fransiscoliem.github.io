@@ -35,10 +35,10 @@ function onSaveButtonClicked(event) {
   console.log('clicked');
   if ('caches' in window) {
     caches.open('user-requested')
-      .then(function(cache) {
-        cache.add('https://httpbin.org/get');
-        cache.add('/src/images/sf-boat.jpg');
-      });
+    .then(function(cache) {
+      cache.add('https://httpbin.org/get');
+      cache.add('/src/images/sf-boat.jpg');
+    });
   }
 }
 
@@ -75,32 +75,71 @@ function createCard() {
   sharedMomentsArea.appendChild(cardWrapper);
 }
 
-var url = 'https://httpbin.org/get';
+function createCards(data){
+  var count = 0;
+  data.forEach(function(rest){
+    data = rest['restaurant'];
+    var cardWrapper = document.createElement('div');
+    cardWrapper.className = 'shared-moment-card mdl-card mdl-shadow--2dp';
+    var cardTitle = document.createElement('div');
+    cardTitle.className = 'mdl-card__title';
+    cardTitle.style.backgroundImage = 'url("'+data['featured_image']+'")';
+    cardTitle.style.backgroundSize = 'cover';
+    cardTitle.style.height = '180px';
+    cardWrapper.appendChild(cardTitle);
+    var cardTitleTextElement = document.createElement('h2');
+    cardTitleTextElement.style.color = 'white';
+    cardTitleTextElement.className = 'mdl-card__title-text';
+    cardTitleTextElement.textContent = data['name'];
+    cardTitle.appendChild(cardTitleTextElement);
+    var cardSupportingText = document.createElement('div');
+    cardSupportingText.className = 'mdl-card__supporting-text';
+    cardSupportingText.textContent = data['location']['city'] + " | " + data['user_rating']['aggregate_rating'] + " stars";
+    cardSupportingText.style.textAlign = 'center';
+  // var cardSaveButton = document.createElement('button');
+  // cardSaveButton.textContent = 'Save';
+  // cardSaveButton.addEventListener('click', onSaveButtonClicked);
+  // cardSupportingText.appendChild(cardSaveButton);
+  cardWrapper.appendChild(cardSupportingText);
+  componentHandler.upgradeElement(cardWrapper);
+  sharedMomentsArea.appendChild(cardWrapper);
+  if(count++ >= 15)
+    break;
+});
+}
+
+var url = 'https://developers.zomato.com/api/v2.1/search?entity_id=74&entity_type=city';
 var networkDataReceived = false;
 
-fetch(url)
-  .then(function(res) {
-    return res.json();
-  })
-  .then(function(data) {
-    networkDataReceived = true;
-    console.log('From web', data);
-    clearCards();
-    createCard();
-  });
+fetch(url,{
+  method:'GET',
+  headers:{
+    'Content-Type' : 'application/json',
+    'user-key' : 'c98ef0400af4c8206ae32b844b5b7cd6'
+  }
+})
+.then(function(res) {
+  return res.json();
+})
+.then(function(data) {
+  networkDataReceived = true;
+  console.log('From web', data);
+  clearCards();
+  createCards(data['restaurants']);
+});
 
 if ('caches' in window) {
   caches.match(url)
-    .then(function(response) {
-      if (response) {
-        return response.json();
-      }
-    })
-    .then(function(data) {
-      console.log('From cache', data);
-      if (!networkDataReceived) {
-        clearCards();
-        createCard();
-      }
-    });
+  .then(function(response) {
+    if (response) {
+      return response.json();
+    }
+  })
+  .then(function(data) {
+    console.log('From cache', data);
+    if (!networkDataReceived) {
+      clearCards();
+      createCards(data['restaurants']);
+    }
+  });
 }
