@@ -80,20 +80,16 @@ function createCards(data){
   data.forEach(function(rest){
     data = rest['restaurant'];
     var cardWrapper = document.createElement('div');
-    cardWrapper.className = 'shared-moment-card mdl-card mdl-shadow--2dp';
     var cardTitle = document.createElement('div');
-    cardTitle.className = 'mdl-card__title';
     cardTitle.style.backgroundImage = 'url("'+data['featured_image']+'")';
     cardTitle.style.backgroundSize = 'cover';
     cardTitle.style.height = '180px';
     cardWrapper.appendChild(cardTitle);
     var cardTitleTextElement = document.createElement('h2');
     cardTitleTextElement.style.color = 'white';
-    cardTitleTextElement.className = 'mdl-card__title-text';
     cardTitleTextElement.textContent = data['name'];
     cardTitle.appendChild(cardTitleTextElement);
     var cardSupportingText = document.createElement('div');
-    cardSupportingText.className = 'mdl-card__supporting-text';
     cardSupportingText.textContent = data['location']['city'] + " | " + data['user_rating']['aggregate_rating'] + " stars";
     cardSupportingText.style.textAlign = 'center';
   // var cardSaveButton = document.createElement('button');
@@ -101,7 +97,6 @@ function createCards(data){
   // cardSaveButton.addEventListener('click', onSaveButtonClicked);
   // cardSupportingText.appendChild(cardSaveButton);
   cardWrapper.appendChild(cardSupportingText);
-  componentHandler.upgradeElement(cardWrapper);
   sharedMomentsArea.appendChild(cardWrapper);
   if(count++ >= 15)
     return;
