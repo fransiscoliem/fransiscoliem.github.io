@@ -28,7 +28,7 @@ function closeCreatePostModal() {
 
 // shareImageButton.addEventListener('click', openCreatePostModal);
 
-closeCreatePostModalButton.addEventListener('click', closeCreatePostModal);
+// closeCreatePostModalButton.addEventListener('click', closeCreatePostModal);
 
 // Currently not in use, allows to save assets in cache on demand otherwise
 function onSaveButtonClicked(event) {
