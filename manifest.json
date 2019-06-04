@@ -1,6 +1,6 @@
 {
-  "name": "Instagram as Progressive Web App",
-  "short_name": "PWAGram",
+  "name": "Rate the Restaurants!",
+  "short_name": "Ratestaurant",
   "icons": [
     {
       "src": "/src/images/icons/app-icon-48x48.png",
@@ -44,7 +44,7 @@
   "orientation": "portrait-primary",
   "background_color": "#fff",
   "theme_color": "#3f51b5",
-  "description": "A simple Instagram Clone, implementing a lot of PWA love.",
+  "description": "Find the restaurant around you, and bookmark it to visit later!",
   "dir": "ltr",
   "lang": "en-US"
 }
