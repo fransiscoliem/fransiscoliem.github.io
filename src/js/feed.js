@@ -84,6 +84,8 @@ function createCards(data){
     cardTitle.style.backgroundImage = 'url("'+data['featured_image']+'")';
     cardTitle.style.backgroundSize = 'cover';
     cardTitle.style.height = '180px';
+    // cardTitle.className = 'class1 class2';
+
     cardWrapper.appendChild(cardTitle);
     var cardTitleTextElement = document.createElement('h2');
     cardTitleTextElement.style.color = 'white';
