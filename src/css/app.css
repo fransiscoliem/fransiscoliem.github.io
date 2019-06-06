@@ -17,6 +17,11 @@ body {
   border-radius: 25px;
 }
 
+.cityName {
+	font-size: calc(12px + 0.5vw);
+	padding-top: calc(3px + 0.5vw);
+}
+
 .cardMain {
 	background-color:#f4f9f5;
 	padding : calc(10px + 0.5vw);
