@@ -88,7 +88,7 @@ function createCards(data){
     // cardTitle.className = 'class1 class2';
 
     cardWrapper.appendChild(cardTitle);
-    var cardTitleTextElement = document.createElement('p');
+    var cardTitleTextElement = document.createElement('span');
     cardTitleTextElement.style.color = 'white';
     cardTitleTextElement.className = 'placeName';
     cardTitleTextElement.textContent = data['name'];
