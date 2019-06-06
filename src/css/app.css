@@ -23,15 +23,17 @@ body {
 }
 
 .cardMain {
-	background-color: blue;
+	background-color: red;
 	padding : calc(10px + 0.5vw);
 	margin:calc(15px + 0.5vw);
+	width: calc(450px + 2vw);
+	height: calc(250px + 2vw);
 }
 
 
-	@media only screen and (max-width:600px){
+/*	@media only screen and (max-width:600px){
 		.cardMain{
-			width: 350px;
+			width: 450px;
 			height: 250px;
 
 		}
@@ -57,3 +59,4 @@ body {
 		}
 	}
 
+*/
