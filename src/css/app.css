@@ -16,6 +16,7 @@ body {
   padding : calc(3px + 0.5vw);
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 25px;
+  font-family: "Merriweather", serif;
 }
 
 .cityName {
