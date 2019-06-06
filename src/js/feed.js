@@ -89,7 +89,7 @@ function createCards(data){
     cardWrapper.appendChild(cardTitle);
     var cardTitleTextElement = document.createElement('p');
     cardTitleTextElement.style.color = 'white';
-    cardTitleTextElement.className = 'placeName'
+    cardTitleTextElement.className = 'placeName';
     cardTitleTextElement.textContent = data['name'];
     cardTitle.appendChild(cardTitleTextElement);
     var cardSupportingText = document.createElement('div');
