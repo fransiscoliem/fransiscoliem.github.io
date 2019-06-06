@@ -11,9 +11,9 @@ body {
   
 }
 .placeName {
-  font-size: calc(14px + 0.25vw);
-  margin : calc(1px + 0.25vw);
-  padding : calc(3px + 0.5vw);
+  font-size: calc(11px + 0.25vw);
+  margin : 0px;
+  padding : calc(4px + 0.5vw);
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 25px;
   font-family: "Merriweather", serif;
