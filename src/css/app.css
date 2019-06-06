@@ -8,11 +8,11 @@
 
 	
 body {  
-  font-size: calc(16px + 1vw);
-  line-height: calc(1.1em + 0.5vw);
+  
 }
-h2 {
-  font-size: calc(1.2em + 4vw);
+.placeName {
+  font-size: calc(14px + 1vw);
+  
 }
 
 @media (min-width: 50em) {
