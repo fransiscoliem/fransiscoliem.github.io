@@ -6,7 +6,24 @@
 	padding: 16px;
 }
 
-/*@media only screen and (max-width:600px){
+	
+body {  
+  font-size: calc(16px + 1vw);
+  line-height: calc(1.1em + 0.5vw);
+}
+h2 {
+  font-size: calc(1.2em + 3vw);
+}
+
+@media (min-width: 50em) {
+  h2 {
+    font-size: 50px;
+  }
+}
+
+
+
+	@media only screen and (max-width:600px){
 		.phone{
 			width:100vw;
 			height:100px;
@@ -43,24 +60,5 @@
 			height:100px;
 			border: 1px solid grey;
 		}
-		}*/
+		}
 
-	/*
-	body {
-  // font grows 1px for every 100px of viewport width
-  font-size: calc(16px + 1vw);
-  // leading grows along with font,
-  // with an additional 0.1em + 0.5px per 100px of the viewport
-  line-height: calc(1.1em + 0.5vw);
-}
-h1 {
-  font-size: calc(1.2em + 3vw);
-}
-
-@media (min-width: 50em) {
-  h1 {
-    font-size: 50px;
-  }
-}
-
-	*/
