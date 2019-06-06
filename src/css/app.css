@@ -23,12 +23,19 @@ body {
 }
 
 .cardMain {
-	background-color: blue;
+	background-color: red;
 	padding : calc(10px + 0.5vw);
 	margin:calc(7px + 0.5vw);
-	width: calc(300px + 30 vw);
-	height: calc(200px + 30 vw);
+	width: calc(300px + 10 vw);
+	height: calc(200px + 10 vw);
 }
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
 /*	@media only screen and (max-width:600px){
