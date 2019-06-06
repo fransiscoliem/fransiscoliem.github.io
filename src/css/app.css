@@ -23,11 +23,11 @@ body {
 }
 
 .cardMain {
-	background-color: red;
+	background-color: yellow;
 	padding : calc(10px + 0.5vw);
 	margin:calc(15px + 0.5vw);
-	width: calc(450px + 2vw);
-	height: calc(250px + 2vw);
+	width: calc(300px + 100vw);
+	height: calc(200px + 100vw);
 }
 
 
