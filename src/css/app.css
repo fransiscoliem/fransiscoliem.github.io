@@ -24,7 +24,8 @@ body {
 
 .cardMain {
 	background-color: red;
-	padding : 10px;
+	padding : calc(10px + 0.5vw);
+	margin:calc(20px + 0.5vw);
 }
 
 
