@@ -98,6 +98,7 @@ function createCards(data){
     cardCity.textContent = data['location']['city'] + " | ";
     var cardRating = document.createElement('div');
     cardRating.className = "ui star rating";
+    cardRating.style.backgroundColor = "red";
     cardRating.setAttribute("data-rating",  3.5);
     // cardSupportingText.textContent = data['location']['city'] + " | " + data['user_rating']['aggregate_rating'] + " stars";
     cardSupportingText.style.textAlign = 'center';
