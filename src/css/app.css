@@ -12,7 +12,7 @@ body {
   line-height: calc(1.1em + 0.5vw);
 }
 h2 {
-  font-size: calc(1.2em + 3vw);
+  font-size: calc(1.2em + 4vw);
 }
 
 @media (min-width: 50em) {
