@@ -94,12 +94,13 @@ function createCards(data){
     cardTitleTextElement.textContent = data['name'];
     cardTitle.appendChild(cardTitleTextElement);
     var cardSupportingText = document.createElement('div');
-    var cardCity = document.createElement('span');
-    cardCity.textContent = data['location']['city'] + " | ";
+    var cardCity = document.createElement('div');
+    cardCity.textContent = data['location']['city'];
+    cardCity.style,fontFamily = "Merriweather";
     var cardRating = document.createElement('div');
     cardRating.className = "ui star rating";
     cardRating.style.backgroundColor = "red";
-    cardRating.setAttribute("data-rating",  3.5);
+    cardRating.setAttribute("data-rating",  3);
     // cardSupportingText.textContent = data['location']['city'] + " | " + data['user_rating']['aggregate_rating'] + " stars";
     cardSupportingText.style.textAlign = 'center';
   // var cardSaveButton = document.createElement('button');
