@@ -96,7 +96,7 @@ function createCards(data){
     var cardSupportingText = document.createElement('div');
     var cardCity = document.createElement('div');
     cardCity.textContent = data['location']['city'];
-    cardCity.style,fontFamily = "Merriweather";
+    cardCity.style.fontFamily = "Merriweather";
     var cardRating = document.createElement('div');
     cardRating.className = "ui star rating";
     cardRating.style.backgroundColor = "red";
