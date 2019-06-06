@@ -14,7 +14,7 @@ body {
   font-size: calc(14px + 0.5vw);
   padding : calc(10px + 0.5vw);
   background-color: black;
-  
+  border-radius: 25px;
 }
 
 .cardMain {
