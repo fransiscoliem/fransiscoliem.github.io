@@ -12,7 +12,7 @@ body {
 }
 .placeName {
   font-size: calc(14px + 0.25vw);
-  margin : calc(5px + 0.5vw);
+  margin : calc(1px + 0.25vw);
   padding : calc(3px + 0.5vw);
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 25px;
