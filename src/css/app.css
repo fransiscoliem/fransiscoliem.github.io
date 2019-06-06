@@ -12,6 +12,7 @@ body {
 }
 .placeName {
   font-size: calc(14px + 1vw);
+  padding : calc(10px + 0.5vw);
   
 }
 
