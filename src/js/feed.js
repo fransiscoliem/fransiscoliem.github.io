@@ -94,12 +94,19 @@ function createCards(data){
     cardTitleTextElement.textContent = data['name'];
     cardTitle.appendChild(cardTitleTextElement);
     var cardSupportingText = document.createElement('div');
-    cardSupportingText.textContent = data['location']['city'] + " | " + data['user_rating']['aggregate_rating'] + " stars";
+    var cardCity = document.createElement('span');
+    cardCity.textContent = data['location']['city'] + " | ";
+    var cardRating = document.createElement('div');
+    cardRating.className = "ui star rating";
+    cardRating.dataRating = data['user_rating']['aggregate_rating'];
+    // cardSupportingText.textContent = data['location']['city'] + " | " + data['user_rating']['aggregate_rating'] + " stars";
     cardSupportingText.style.textAlign = 'center';
   // var cardSaveButton = document.createElement('button');
   // cardSaveButton.textContent = 'Save';
   // cardSaveButton.addEventListener('click', onSaveButtonClicked);
   // cardSupportingText.appendChild(cardSaveButton);
+  cardSupportingText.appendChild(cardCity);
+  cardSupportingText.appendChild(cardRating);
   cardWrapper.appendChild(cardSupportingText);
   sharedMomentsArea.appendChild(cardWrapper);
   if(count++ >= 15)
