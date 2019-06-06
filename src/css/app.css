@@ -26,8 +26,8 @@ body {
 	background-color: green;
 	padding : calc(10px + 0.5vw);
 	margin:calc(7px + 0.5vw);
-	width: calc(300px + 1vw);
-	height: calc(200px + 1vw);
+	width: calc(300px + 5vw);
+	height: calc(200px + 5vw);
 }
 
 .flex-container {
