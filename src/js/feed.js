@@ -95,6 +95,7 @@ function createCards(data){
     cardTitle.appendChild(cardTitleTextElement);
     var cardSupportingText = document.createElement('div');
     var cardCity = document.createElement('div');
+    cardCity.className = 'cityName';
     cardCity.textContent = data['location']['city'];
     cardCity.style.fontFamily = "Merriweather";
     var cardRating = document.createElement('div');
