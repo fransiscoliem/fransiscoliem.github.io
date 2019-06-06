@@ -11,9 +11,9 @@ body {
   
 }
 .placeName {
-  font-size: calc(14px + 0.5vw);
-  padding : calc(10px + 0.5vw);
-  background-color: black;
+  font-size: calc(14px + 0.25vw);
+  margin : calc(10px + 0.5vw);
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 25px;
 }
 
