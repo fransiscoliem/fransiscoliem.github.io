@@ -23,11 +23,11 @@ body {
 }
 
 .cardMain {
-	background-color: rgba(0, 255, 153, 0.5);
+	background-color:#f4f9f5;
 	padding : calc(10px + 0.5vw);
 	margin:calc(7px + 0.5vw);
 	width: calc(300px + 5vw);
-	height: calc(250px + 5vw);
+	height: calc(280px + 5vw);
 }
 
 .flex-container {
