@@ -96,7 +96,7 @@ function createCards(data){
     var cardSupportingText = document.createElement('div');
     var cardCity = document.createElement('span');
     cardCity.textContent = data['location']['city'] + " | ";
-    var cardRating = document.createElement('span');
+    var cardRating = document.createElement('div');
     cardRating.className = "ui star rating";
     cardRating.dataRating = data['user_rating']['aggregate_rating'];
     // cardSupportingText.textContent = data['location']['city'] + " | " + data['user_rating']['aggregate_rating'] + " stars";
