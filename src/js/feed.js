@@ -98,7 +98,7 @@ function createCards(data){
     cardCity.textContent = data['location']['city'] + " | ";
     var cardRating = document.createElement('div');
     cardRating.className = "ui star rating";
-    cardRating.setAttribute("data-rating",  data['user_rating']['aggregate_rating']);
+    cardRating.setAttribute("data-rating",  3.5);
     // cardSupportingText.textContent = data['location']['city'] + " | " + data['user_rating']['aggregate_rating'] + " stars";
     cardSupportingText.style.textAlign = 'center';
   // var cardSaveButton = document.createElement('button');
