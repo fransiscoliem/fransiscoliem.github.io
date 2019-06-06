@@ -13,13 +13,8 @@ body {
 .placeName {
   font-size: calc(14px + 0.5vw);
   padding : calc(10px + 0.5vw);
+  background-color: black;
   
-}
-
-@media (min-width: 50em) {
-  h2 {
-    font-size: 50px;
-  }
 }
 
 .cardMain {
@@ -38,35 +33,3 @@ body {
   align-content: space-between;
 
 }
-
-
-
-/*	@media only screen and (max-width:600px){
-		.cardMain{
-			width: 450px;
-			height: 250px;
-
-		}
-	}
-	@media only screen and (max-width: 900px) and (min-width: 601px){
-		.cardMain{
-			width: 550px;
-			height: 450px;
-			
-		}
-	}
-	@media only screen and (max-width: 1200px) and (min-width: 901px){
-		.cardMain{
-			width: 350px;
-			height: 350px;
-			
-		}
-	}
-	@media only screen and (min-width: 1201px){
-		.cardMain{
-			width: 450px;
-			height: 450px;
-		}
-	}
-
-*/
