@@ -80,6 +80,7 @@ function createCards(data){
   data.forEach(function(rest){
     data = rest['restaurant'];
     var cardWrapper = document.createElement('div');
+    cardWrapper.className = 'cardMain';
     var cardTitle = document.createElement('div');
     cardTitle.style.backgroundImage = 'url("'+data['featured_image']+'")';
     cardTitle.style.backgroundSize = 'cover';
