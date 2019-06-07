@@ -24,19 +24,24 @@ window.addEventListener('beforeinstallprompt', function(event) {
 });
 
 var request = window.indexedDB.open("database", 1);
+var db;
 // Create schema
 request.onupgradeneeded = event => {
-  const db = event.target.result;
+  const db_create = event.target.result;
 
-  const likes_store = db.createObjectStore(
+  const likes_store = db_create.createObjectStore(
     "likes",
     { keyPath: ["restaurant_id"] }
     );  
+  console.log('db created : ' + db_create);
+};
+request.onsuccess = event => {
+  db = request.result;
+  console.log('db opened : ' + db);
 };
 
 function save_database(id, name, cuisine, address){
   console.log(id + name + cuisine + address);
-  var db = request.result;
   var transaction = db.transaction(['likes'],"readwrite")
   .objectStore("likes")
   .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
@@ -46,7 +51,6 @@ function save_database(id, name, cuisine, address){
     };
     transaction.oncomplete = () => {
       alert('com');
-      db.close();
     };
     transaction.onerror = () => {
       console.log('err');
