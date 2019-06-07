@@ -41,7 +41,7 @@ function save_database(id, name, cuisine, address){
   request.onsuccess = () => {
     const db = request.result;
     const transaction = db.transaction(
-      'likes',
+      ['likes'],
       "readwrite"
       );
     const likesStore = transaction.objectStore("likes");
@@ -54,6 +54,9 @@ function save_database(id, name, cuisine, address){
     transaction.oncomplete = () => {
       db.close();
     };
+  };
+  request.onerror = () => {
+    alert('fail');
   };
 }
 
