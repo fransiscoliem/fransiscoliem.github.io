@@ -74,7 +74,7 @@ function createCards(data){
     cardAddr.className = 'cityName';
     cardAddr.textContent = dataEach['location']['address'];
     cardPhone.className = 'phoneName';
-    cardPhone.textContent = dataEach['phone_numbers'];
+    cardPhone.textContent = dataEach['cuisines'];
     var cardWrapRating = document.createElement('div');
     cardWrapRating.className = "ratingWrap";
 
