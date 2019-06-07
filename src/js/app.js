@@ -53,6 +53,16 @@ if (!window.indexedDB) {
 }
 
 function add(rest_id, rest_name, rest_cuisine, rest_address){
+  var request = window.indexedDB.open("SavestaurantDB", 1);
+  request.onerror = function(event) {
+    console.log(request.errorCode);
+  };
+  request.onsuccess = function(event) {
+    db = event.target.result;
+    console.log('database fetched.');
+    console.log(db);
+  };
+  
   var transaction = db.transaction(["saved_places"], "readwrite");
 
   var objectStore = transaction.objectStore("saved_places");
@@ -79,6 +89,16 @@ function add(rest_id, rest_name, rest_cuisine, rest_address){
 }
 
 function get(){
+  var request = window.indexedDB.open("SavestaurantDB", 1);
+  request.onerror = function(event) {
+    console.log(request.errorCode);
+  };
+  request.onsuccess = function(event) {
+    db = event.target.result;
+    console.log('database fetched.');
+    console.log(db);
+  };
+
   var return_arr = [];
   var objectStore = db.transaction("saved_places").objectStore("saved_places");
   objectStore.openCursor().onsuccess = function(event){
