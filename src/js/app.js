@@ -36,7 +36,6 @@ request.onupgradeneeded = event => {
 
 function save_database(id, name, cuisine, address){
   console.log(id + name + cuisine + address);
-  request.onsuccess = () => {
     const db = request.result;
     const transaction = db.transaction(['likes'],"readwrite")
     .objectStore("likes")
@@ -52,10 +51,6 @@ function save_database(id, name, cuisine, address){
     transaction.onabort = () => {
       console.log('ab');
     }
-  };
-  request.onerror = () => {
-    alert('fail');
-  };
 }
 
     // <div class="ui header">Restauran Detail : </div>
