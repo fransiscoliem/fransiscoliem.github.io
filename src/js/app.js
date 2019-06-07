@@ -55,8 +55,6 @@ function save_database(id, name, cuisine, address){
       db.close();
     };
   };
-
-  request.
 }
 
     // <div class="ui header">Restauran Detail : </div>
