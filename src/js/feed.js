@@ -86,7 +86,7 @@ function createCards(data){
 
     var cardRating = document.createElement('div');
     var textRating = document.createElement('span');
-    textRating.textContent = dataEach['user_rating']['aggregate_rating'];
+    textRating.textContent = " | " + dataEach['user_rating']['aggregate_rating'];
     // var spaceEnter = document.createElement('br');
     cardRating.className = "ui star rating";
 
