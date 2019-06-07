@@ -101,14 +101,18 @@ function createCards(data){
     $(".rating").rating('disable', {
       maxRating: 5
     });
+    var x = document.getElementsByClassName("cardMain");
+    for(var i=0; i<x.length;i++){
+      x[i].addEventListener('touchstart', fillModal(x[i].getAttribute("idRest")), false);
+    }
     return;
   }
 
 });
 }
 
-function fillRestaurant(data){
-  
+function fillModal(idRest){
+  alert(idRest);
 }
 
 var url = 'https://developers.zomato.com/api/v2.1/search?entity_id=74&entity_type=city';
