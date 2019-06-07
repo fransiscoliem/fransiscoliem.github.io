@@ -23,6 +23,18 @@ window.addEventListener('beforeinstallprompt', function(event) {
   return false;
 });
 
+const request = window.indexedDB.open("database", 1);
+// Create schema
+request.onupgradeneeded = event => {
+    const db = event.target.result;
+    
+    const likes_store = db.createObjectStore(
+        "likes",
+        { keyPath: ["restaurant_id", "row"] }
+    );
+    fileStore.createIndex("LikesIndex", "row");    
+};
+
 $(function(){
   $('.ui.modal').modal();
 });
