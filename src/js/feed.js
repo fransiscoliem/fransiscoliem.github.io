@@ -48,41 +48,15 @@ function clearCards() {
   }
 }
 
-function createCard() {
-  var cardWrapper = document.createElement('div');
-  cardWrapper.className = 'shared-moment-card mdl-card mdl-shadow--2dp';
-  var cardTitle = document.createElement('div');
-  cardTitle.className = 'mdl-card__title';
-  cardTitle.style.backgroundImage = 'url("/src/images/sf-boat.jpg")';
-  cardTitle.style.backgroundSize = 'cover';
-  cardTitle.style.height = '180px';
-  cardWrapper.appendChild(cardTitle);
-  var cardTitleTextElement = document.createElement('h2');
-  cardTitleTextElement.style.color = 'white';
-  cardTitleTextElement.className = 'mdl-card__title-text';
-  cardTitleTextElement.textContent = 'San Francisco Trip';
-  cardTitle.appendChild(cardTitleTextElement);
-  var cardSupportingText = document.createElement('div');
-  cardSupportingText.className = 'mdl-card__supporting-text';
-  cardSupportingText.textContent = 'In San Francisco';
-  cardSupportingText.style.textAlign = 'center';
-  // var cardSaveButton = document.createElement('button');
-  // cardSaveButton.textContent = 'Save';
-  // cardSaveButton.addEventListener('click', onSaveButtonClicked);
-  // cardSupportingText.appendChild(cardSaveButton);
-  cardWrapper.appendChild(cardSupportingText);
-  componentHandler.upgradeElement(cardWrapper);
-  sharedMomentsArea.appendChild(cardWrapper);
-}
-
 function createCards(data){
   var count = 0;
   data.forEach(function(rest){
-    data = rest['restaurant'];
+    dataEach = rest['restaurant'];
     var cardWrapper = document.createElement('div');
     cardWrapper.className = 'cardMain';
+    cardWrapper.setAttribute("idRest", dataEach['id']);
     var cardTitle = document.createElement('div');
-    cardTitle.style.backgroundImage = 'url("'+data['featured_image']+'")';
+    cardTitle.style.backgroundImage = 'url("'+dataEach['featured_image']+'")';
     cardTitle.style.backgroundSize = 'cover';
     cardTitle.style.height = '180px';
     // cardTitle.className = 'class1 class2';
@@ -91,9 +65,10 @@ function createCards(data){
     var cardTitleTextElement = document.createElement('span');
     cardTitleTextElement.style.color = 'white';
     cardTitleTextElement.className = 'placeName';
-    cardTitleTextElement.textContent = data['name'];
+    cardTitleTextElement.textContent = dataEach['name'];
     cardTitle.appendChild(cardTitleTextElement);
     var cardSupportingText = document.createElement('div');
+
     var cardAddr = document.createElement('div');
     var cardPhone = document.createElement('div');
     cardAddr.className = 'cityName';
@@ -102,6 +77,7 @@ function createCards(data){
     cardPhone.textContent = data['phone_numbers'];
     var cardWrapRating = document.createElement('div');
     cardWrapRating.className = "ratingWrap";
+
     var cardRating = document.createElement('div');
     cardWrapRating.textContent = data['user_rating']['aggregate_rating'];
     var spaceEnter = document.createElement('br');
@@ -127,6 +103,10 @@ function createCards(data){
   }
 
 });
+}
+
+function fillRestaurant(data){
+  
 }
 
 var url = 'https://developers.zomato.com/api/v2.1/search?entity_id=74&entity_type=city';
