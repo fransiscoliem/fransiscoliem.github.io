@@ -112,7 +112,7 @@ self.addEventListener('fetch', function(event) {
         return caches.open(CACHE_DYNAMIC_NAME)
                 .then(function(cache) {
                   var res_clone = res.clone();
-                  res_clone.length = 5;
+                  res_clone.length = 1;
                   cache.put(event.request.url, res_clone);
                   return res;
                 })

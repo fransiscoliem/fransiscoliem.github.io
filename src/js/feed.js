@@ -211,6 +211,23 @@ function createCards(data){
 var url = 'https://developers.zomato.com/api/v2.1/search?entity_id=74&entity_type=city&count=30';
 var networkDataReceived = false;
 
+
+if ('caches' in window) {
+  caches.match(url)
+  .then(function(response) {
+    if (response) {
+      return response.json();
+    }
+  })
+  .then(function(data) {
+    console.log('From cache', data);
+    if (!networkDataReceived) {
+      clearCards();
+      createCards(data['restaurants']);
+    }
+  });
+}
+
 fetch(url,{
   method:'GET',
   headers:{
@@ -228,18 +245,3 @@ fetch(url,{
   createCards(data['restaurants']);
 });
 
-if ('caches' in window) {
-  caches.match(url)
-  .then(function(response) {
-    if (response) {
-      return response.json();
-    }
-  })
-  .then(function(data) {
-    console.log('From cache', data);
-    if (!networkDataReceived) {
-      clearCards();
-      createCards(data['restaurants']);
-    }
-  });
-}
