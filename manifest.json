@@ -42,8 +42,8 @@
   "scope": ".",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#fff",
-  "theme_color": "#3f51b5",
+  "background_color": "#ffffff",
+  "theme_color": "#61c6c1",
   "description": "Find the restaurant around you, and bookmark it to visit later!",
   "dir": "ltr",
   "lang": "en-US"
