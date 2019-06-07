@@ -83,6 +83,7 @@ function fillModal(event){
   })
   .then(function(data) {
     $('#detail-title').html(data['name']);
+    $('#detail-title').attr('style', "font-family: 'Libre Franklin', sans-serif;");
     $('#detail-image').attr('src', data['featured_image']);
     $('#detail-address').html(data['location']['address']);
     $('#detail-cuisine').html(data['cuisines']);
