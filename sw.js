@@ -13,10 +13,10 @@ self.addEventListener('install', function (event) {
           '/offline.html',
           '/src/js/app.js',
           '/src/js/feed.js',
-          '/src/js/promise.js',
           '/src/js/fetch.js',
           '/src/css/app.css',
           '/src/css/feed.css',
+          '/manifest.json',
         ]);
       })
   )
@@ -111,7 +111,9 @@ self.addEventListener('fetch', function(event) {
       .then(function(res) {
         return caches.open(CACHE_DYNAMIC_NAME)
                 .then(function(cache) {
-                  // cache.put(event.request.url, res.clone());
+                  var res_clone = res.clone();
+                  res_clone.length = 5;
+                  cache.put(event.request.url, res_clone);
                   return res;
                 })
       })
