@@ -2,7 +2,7 @@ var shareImageButton = document.querySelector('#share-image-button');
 var createPostArea = document.querySelector('#create-post');
 var closeCreatePostModalButton = document.querySelector('#close-create-post-modal-btn');
 var sharedMomentsArea = document.querySelector('#places-home');
-
+var touchmoved;
 function openCreatePostModal() {
   createPostArea.style.display = 'block';
   if (deferredPrompt) {
@@ -96,7 +96,7 @@ function fillModal(event){
     else{
       $('#detail-delivery').html("No");
     }
-     if(data['has_table_booking'] == 0){
+    if(data['has_table_booking'] == 0){
       $('#detail-booking').html("Yes");
     }
     else{
@@ -185,15 +185,25 @@ function createCards(data){
   cardWrapper.appendChild(cardSupportingText);
   sharedMomentsArea.appendChild(cardWrapper);
 
-  if(count++ >= 15){
+  if(count++ >= 29){
     $(".rating").rating('disable');
+    
+    $('.cardMain').on('touchend', function(e){
+      if(touchmoved != true){
+        fillModal();
+      }
+    }).on('touchmove', function(e){
+      touchmoved = true;
+    }).on('touchstart', function(){
+      touchmoved = false;
+    });
 
-    var x = document.getElementsByClassName("cardMain");
-    console.log(x.length);
-    for(var i=0; i<x.length;i++){
-      x[i].addEventListener('touchend', fillModal);
-      x[i].addEventListener('mouseup', fillModal, false);
-    }
+    // var x = document.getElementsByClassName("cardMain");
+    // console.log(x.length);
+    // for(var i=0; i<x.length;i++){
+    //   x[i].addEventListener('touchend', fillModal);
+    //   x[i].addEventListener('mouseup', fillModal, false);
+    // }
     return;
   }
 
@@ -201,7 +211,7 @@ function createCards(data){
 }
 
 
-var url = 'https://developers.zomato.com/api/v2.1/search?entity_id=74&entity_type=city';
+var url = 'https://developers.zomato.com/api/v2.1/search?entity_id=74&entity_type=city&count=30';
 var networkDataReceived = false;
 
 fetch(url,{
