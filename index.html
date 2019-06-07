@@ -1,11 +1,25 @@
-<!DOCTYPE html>
-
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
-  <script type = "text/javascript">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ratestaurant</title>\
+  <link href="https://fonts.googleapis.com/css?family=Antic|Questrial&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dosis|Libre+Franklin&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
 
-         //prefixes of implementation that we want to test
+  <link rel="stylesheet" type="text/css" href="/src/css/app.css">
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script src="semantic/dist/semantic.min.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <script>
+    //prefixes of implementation that we want to test
          window.indexedDB = window.indexedDB || window.mozIndexedDB || 
          window.webkitIndexedDB || window.msIndexedDB;
          
@@ -19,9 +33,8 @@
           window.alert("Your browser doesn't support a stable version of IndexedDB.")
         }
 
-        const employeeData = [];
         var db;
-        var request = window.indexedDB.open("newDatabase", 1);
+        var request = window.indexedDB.open("database", 1);
 
         request.onerror = function(event) {
           console.log("error: ");
@@ -34,35 +47,8 @@
 
         request.onupgradeneeded = function(event) {
           var db = event.target.result;
-          var objectStore = db.createObjectStore("employee", {keyPath: "id"});
-
-          for (var i in employeeData) {
-           objectStore.add(employeeData[i]);
-         }
+          var objectStore = db.createObjectStore("likes", {keyPath: "restaurant_id"});
        }
-
-       function read() {
-         var id = document.getElementById("id");
-         var name = document.getElementById("name");
-         var email = document.getElementById("email");
-         var age = document.getElementById("age");
-         var transaction = db.transaction(["employee"]);
-         var objectStore = transaction.objectStore("employee");
-         var request = objectStore.get(id.value );
-
-         request.onerror = function(event) {
-           alert("Unable to retrieve daa from database!");
-         };
-
-         request.onsuccess = function(event) {
-               // Do something with the request.result!
-               if(request.result) {
-                alert("Name: " + request.result.name + ",Age: " + request.result.age + ", Email: " + request.result.email);
-              } else {
-                alert("Kenny couldn't be found in your database!");
-              }
-            };
-          }
 
           function readAll() {
             var objectStore = db.transaction("employee").objectStore("employee");
@@ -79,14 +65,27 @@
           };
         }
 
-        function add() {
-          var id = document.getElementById("id");
-          var name = document.getElementById("name");
-          var email = document.getElementById("email");
-          var age = document.getElementById("age");
-          var request = db.transaction(["employee"], "readwrite")
-          .objectStore("employee")
-          .add({ id: id.value, name: name.value, age: age.value, email: email.value });
+       //  function save_database(id, name, cuisine, address) {
+       //   var request = db.transaction(["likes"], "readwrite")
+       //    .objectStore("likes")
+       //    .put({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
+
+       //    request.onsuccess = function(event) {
+       //     alert(name+" has been added to your database.");
+       //   };
+
+       //   request.onerror = function(event) {
+       //     alert("Unable to add data\r\nKenny is aready exist in your database! ");
+       //   }
+       // }
+       function save_database() {
+          var id = window.localStorage.getItem('idRest');
+          var cuisine = document.getElementById("detail-cuisine");
+          var name = document.getElementById("detail-title");
+          var address = document.getElementById("detail-address");
+          var request = db.transaction(["likes"], "readwrite")
+          .objectStore("likes")
+          .add({ restaurant_id: id, restaurant_name: name.value, restaurant_cuisine: cuisine.value, restaurant_address: address.value });
 
           request.onsuccess = function(event) {
            alert(name.value+" has been added to your database.");
@@ -97,48 +96,99 @@
          }
        }
 
-       function remove() {
-         var id = document.getElementById("id");
-         var name = document.getElementById("name");
-         var email = document.getElementById("email");
-         var age = document.getElementById("age");
-         var request = db.transaction(["employee"], "readwrite")
-         .objectStore("employee")
-         .delete(id.value);
+  </script>
+</head>
+<body>
 
-         request.onsuccess = function(event) {
-           alert(name.value +" entry has been removed from your database.");
-         };
-       }
-       function update() {
-         var id = document.getElementById("id");
-         var name = document.getElementById("name");
-         var email = document.getElementById("email");
-         var age = document.getElementById("age");
-         var request = db.transaction(["employee"], 'readwrite')
-         .objectStore("employee")
-         .put({ id: id.value, name: name.value, age: age.value, email: email.value });
+  <div class="ui teal fixed inverted menu compact">
+    <div class="center aligned item">
+      <h4>Cari Makan Yuk!</h4>
+    </div>
+    <div class="right menu">
+      <a class="item">
+        Likes
+      </a>
+    </div>
+    <!-- <div class="ui fluid action input">
+      <input type="text" placeholder="Search...">
+      <div class="ui button">Search</div>
+    </div> -->
+  </div>
+  <br>
+  <div class="ui icon message">
+    <div class="content">
+      <div class="ui fluid icon input">
+        <input type="text" placeholder="Search..." label="search">
+       
+        <button class="ui icon button" name="btnSearch" role="button" aria-label="btn">
+         <i class="search icon"></i>
+      </button>
+      </div>
+    </div>
+  </div>
 
-         request.onsuccess = function (event) {
-          console.log(name.value + ' has been updated successfully');
-        };
+  <div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header" id="detail-title">
+      
+    </div>
+    <div class="image content">
+      <div class="ui medium image">
+        <img src="" id="detail-image">
+      </div>
+      <div class="description">
+        <div class="ui header" style="font-family: 'Dosis', sans-serif;">Restaurant Detail : </div>
+        <table class="ui very basic table">
+            <tbody>
+              <tr>
+                <td>Cuisine</td>
+                <td id="detail-cuisine"></td>
+              </tr>
+              <tr>
+                <td>Address</td>
+                <td id="detail-address"></td>
+              </tr>
+              <tr>
+               <td>Rating</td>
+                <td id="detail-rating"></td>
+              </tr>
+              <tr>
+               <td>Average Cost</td>
+                <td id="detail-average"></td>
+              </tr>
+               <tr>
+               <td>Online Delivery</td>
+                <td id="detail-delivery"></td>
+              </tr>
+               <tr>
+               <td>Table Booking</td>
+                <td id="detail-booking"></td>
+              </tr>
+            </tbody>
+          </table>
+      <!--   <p id="detail-address"></p>
+        <p id="detail-rating"></p>
+        <p id="detail-average"></p> -->
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui black deny button">
+        Close
+      </div>
+      <div class="ui positive right labeled icon button" id="save-button">
+        Save
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
 
-        request.onerror = function (event) {
-          console.log('The data has been updated failed');
-        }
-      }
-    </script>
+  <div class="flex-container" id="places-home">
 
-  </head>
-  <body>
-    <label>ID :</label> <input type="text" id="id"> 
-    <button onclick = "read()">Read </button>  <br>
-    <label>Name :</label> <input type="text" id="name"> <br>
-    <label>Age :</label> <input type="text" id="age"> <br>
-    <label>E-mail : </label> <input type="text" id="email"><br>
-    <button onclick = "readAll()">Read all </button>
-    <button onclick = "add()">Add Data </button>
-    <button onclick = "remove()">Delete Data </button>
-    <button onclick="update()">Update Data</button>
-  </body>
-  </html>
+  </div>
+  <h1>asdasddas</h1>
+  <script src="/src/js/promise.js"></script>
+  <script src="/src/js/fetch.js"></script>
+  <script src="/src/js/app.js"></script>
+  <script src="/src/js/feed.js"></script>
+</body>
+</html>
