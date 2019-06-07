@@ -22,7 +22,7 @@ body {
 .cityName {
 	font-size: calc(13px + 0.25vw);
 	padding-top: calc(8px + 0.5vw);
-	font-family: 'Merriweather', serif;
+	font-family: 'Antic', sans-serif;
 }
 
 .phoneName {
