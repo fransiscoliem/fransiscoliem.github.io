@@ -77,7 +77,7 @@ window.addEventListener('beforeinstallprompt', function(event) {
         function save_database(id, name, cuisine, address) {
          var request = db.transaction(["likes"], "readwrite")
           .objectStore("likes")
-          .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
+          .put({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
 
           request.onsuccess = function(event) {
            alert(name+" has been added to your database.");
