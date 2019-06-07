@@ -84,6 +84,7 @@ function fillModal(event){
   .then(function(data) {
     $('#detail-title').html(data['name']);
     $('#detail-image').attr('src', data['featured_image']);
+    $('#detail-address').html(data['location']['address']);
     $('#detail-cuisine').html(data['cuisines']);
     $('#detail-rating').html(data['user_rating']['aggregate_rating'] + '/5.0');
     $('#detail-average').html(data['average_cost_for_two'] + " " + data['currency'] + " (average cost for two people)");
