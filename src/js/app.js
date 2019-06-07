@@ -35,9 +35,7 @@ request.onupgradeneeded = event => {
 };
 
 function save_database(id, name, cuisine, address){
-  const request = window.indexedDB.open("database", 1);
-  
-    console.log(id + name + cuisine + address);
+  console.log(id + name + cuisine + address);
   request.onsuccess = () => {
     const db = request.result;
     const transaction = db.transaction(['likes'],"readwrite")
@@ -87,20 +85,20 @@ function save_database(id, name, cuisine, address){
     //         </tbody>
     //       </table> 
 
-$(function(){
-  $('.ui.modal').modal({
-    onDeny : function(){
-      return false;
-    },
-    onPositive : function(){
-      return false; 
-    }
-  });
-  $('#save-button').click(function(){
-    var rest_id = window.localStorage.getItem('idRest');
-    var rest_name = $('#detail-title').html();
-    var rest_cuisine = $('#detail-cuisine').html();
-    var rest_address = $('#detail-address').html();
-    save_database(rest_id, rest_name, rest_cuisine, rest_address);
-  });
-});
+    $(function(){
+      $('.ui.modal').modal({
+        onDeny : function(){
+          return false;
+        },
+        onPositive : function(){
+          return false; 
+        }
+      });
+      $('#save-button').click(function(){
+        var rest_id = window.localStorage.getItem('idRest');
+        var rest_name = $('#detail-title').html();
+        var rest_cuisine = $('#detail-cuisine').html();
+        var rest_address = $('#detail-address').html();
+        save_database(rest_id, rest_name, rest_cuisine, rest_address);
+      });
+    });
