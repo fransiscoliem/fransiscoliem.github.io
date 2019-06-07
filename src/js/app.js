@@ -85,7 +85,6 @@ function get(){
     var cursor = event.target.result;
     if(cursor){
       return_arr.push(cursor.value);
-      console.log(cursor.key + ":" + cursor.value.restaurant_name);
       cursor.continue();
     }
     else{

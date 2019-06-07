@@ -52,6 +52,45 @@ function fillModal(obj){
     $('#modal-detail').modal('refresh'); 
     $('#modal-detail').modal('show'); 
   });
+}
+
+function fillModalSave(obj){
+  var x = obj.attr("idrest");
+  window.localStorage.setItem('idRest', x);
+  var url_search = "https://developers.zomato.com/api/v2.1/restaurant?res_id="+x;
+  fetch(url_search,{
+    method:'GET',
+    headers:{
+      'Content-Type' : 'application/json',
+      'user-key' : 'c98ef0400af4c8206ae32b844b5b7cd6'
+    }
+  })
+  .then(function(res) {
+    return res.json();
+  })
+  .then(function(data) {
+    $('#detail-title-save').html(data['name']);
+    $('#detail-title-save').attr('style', "font-family: 'Libre Franklin', sans-serif;");
+    $('#detail-image-save').attr('src', data['featured_image']);
+    $('#detail-address-save').html(data['location']['address']);
+    $('#detail-cuisine-save').html(data['cuisines']);
+    $('#detail-rating-save').html(data['user_rating']['aggregate_rating'] + '/5.0');
+    $('#detail-average-save').html(data['average_cost_for_two'] + " " + data['currency'] + " (average cost for two people)");
+    if(data['has_online_delivery'] == 0){
+      $('#detail-delivery-save').html("Yes");
+    }
+    else{
+      $('#detail-delivery-save').html("No");
+    }
+    if(data['has_table_booking'] == 0){
+      $('#detail-booking-save').html("Yes");
+    }
+    else{
+      $('#detail-booking-save').html("No");
+    }
+    $('#modal-detail-save').modal('refresh'); 
+    $('#modal-detail-save').modal('show'); 
+  });
 
 }
 
@@ -212,7 +251,7 @@ function fetch_saved(){
   saved_arr.forEach(function(val){
     console.log(val);
     var url_rest = "https://developers.zomato.com/api/v2.1/restaurant?res_id=" + val['restaurant_id'];
-    fetch(url,{
+    fetch(url_rest,{
       method:'GET',
       headers:{
         'Content-Type' : 'application/json',
