@@ -68,7 +68,7 @@ function add(rest_id, rest_name, rest_cuisine, rest_address){
     console.log(db);
   };
 
-  var transaction = db.transaction(["saved_places"], "readwrite");
+  var transaction = db.transaction(["saved_places"], window.webkitIDBTransaction.READ_WRITE);
 
   var objectStore = transaction.objectStore("saved_places");
   var add_data = {
