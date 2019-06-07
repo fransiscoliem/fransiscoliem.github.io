@@ -45,6 +45,7 @@ function save_database(id, name, cuisine, address){
     .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
     // Clean up: close connection
     transaction.oncomplete = () => {
+      alert('aaaaaaaaaaaaaaa');
       db.close();
     };
     transaction.onerror = () => {
