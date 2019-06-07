@@ -44,7 +44,7 @@ function save_database(id, name, cuisine, address){
   console.log(id + name + cuisine + address);
   var transaction = db.transaction(['likes'],"readwrite")
   .objectStore("likes")
-  .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
+  .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address }, id);
     // Clean up: close connection
     transaction.onsuccess = () => {
       console.log('suc');
