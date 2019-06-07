@@ -58,10 +58,10 @@ if (!window.indexedDB) {
     var objectStore = db.createObjectStore("saved_places", { keyPath: "restaurant_id" });
     objectStore.transaction.oncomplete = function(event) {
     // Store values in the newly created objectStore.
-    var savedObjectStore = db.transaction("saved_places", "readwrite").objectStore("saved_places");
-    restaurantData.forEach(function(rest) {
-      savedObjectStore.add(rest);
-    });
+    // var savedObjectStore = db.transaction("saved_places", "readwrite").objectStore("saved_places");
+    // restaurantData.forEach(function(rest) {
+    //   savedObjectStore.add(rest);
+    // });
     console.log('db created and added');
     console.log(db);
   };
@@ -81,7 +81,7 @@ function add(rest_id, rest_name, rest_cuisine, rest_address){
 
   var objectStore = transaction.objectStore("saved_places");
   var add_data = {
-    restaurant_id:10,
+    restaurant_id:rest_id,
     restaurant_name:rest_name,
     restaurant_cuisine:rest_cuisine,
     restaurant_address:rest_address,
