@@ -69,6 +69,7 @@ function clearCards() {
 
 function fillModal(event){
   var x = this.getAttribute("idRest");
+  window.localStorage.setItem('idRest', x);
   alert(x);
   var url_search = "https://developers.zomato.com/api/v2.1/restaurant?res_id="+x;
   fetch(url_search,{
