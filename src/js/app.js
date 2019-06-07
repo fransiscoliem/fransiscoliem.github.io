@@ -32,7 +32,7 @@ request.onupgradeneeded = event => {
         "likes",
         { keyPath: ["restaurant_id", "row"] }
     );
-    fileStore.createIndex("LikesIndex", "row");    
+    likes_store.createIndex("LikesIndex", "row");    
 };
 
 $(function(){
