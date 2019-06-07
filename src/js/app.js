@@ -143,8 +143,10 @@ function fillModal(obj){
     else{
       $('#detail-booking').html("No");
     }
-    $('#modal-detail').modal('show'); 
-    $('#modal-detail').modal('refresh'); 
+    $('#modal-detail')
+    .modal({observeChanges: true})
+    .modal('show'); 
+    // $('#modal-detail').modal('refresh'); 
   });
 }
 
@@ -182,8 +184,10 @@ function fillModalSave(obj){
     else{
       $('#detail-booking-save').html("No");
     }
-    $('#modal-detail-save').modal('show');
-    $('#modal-detail-save').modal('refresh');  
+    $('#modal-detail-save')
+    .modal({observeChanges: true})
+    .modal('show'); 
+    // $('#modal-detail-save').modal('refresh');  
   });
 
 }
