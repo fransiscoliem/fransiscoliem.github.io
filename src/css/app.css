@@ -42,7 +42,8 @@ body {
 	padding : calc(10px + 0.5vw);
 	margin:calc(7px + 0.5vw);
 	width: calc(300px + 5vw);
-	height: calc(280px + 5vw);
+	/*height: calc(280px + 5vw);*/
+	height: auto;
 }
 
 .flex-container {
