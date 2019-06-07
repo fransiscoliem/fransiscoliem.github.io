@@ -62,6 +62,7 @@ if (!window.indexedDB) {
       savedObjectStore.add(rest);
     });
     console.log('db created and added');
+    console.log(db);
   };
 };
 }
