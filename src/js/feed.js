@@ -127,7 +127,7 @@ function search(query){
   })
   .then(function(data) {
     clearCards();
-    createCards(data);
+    createCards(data['restaurants']);
   });
 
 }
