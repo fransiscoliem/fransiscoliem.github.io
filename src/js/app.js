@@ -93,7 +93,7 @@ window.addEventListener('beforeinstallprompt', function(event) {
           var name = document.getElementById("detail-title");
           var address = document.getElementById("detail-address");
           var request = db.transaction(["likes"], "readwrite")
-          .objectStore("employee")
+          .objectStore("likes")
           .add({ restaurant_id: id, restaurant_name: name.value, restaurant_cuisine: cuisine.value, restaurant_address: address.value });
 
           request.onsuccess = function(event) {
