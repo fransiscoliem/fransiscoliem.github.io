@@ -40,20 +40,16 @@ function save_database(id, name, cuisine, address){
     console.log(id + name + cuisine + address);
   request.onsuccess = () => {
     const db = request.result;
-    const transaction = db.transaction(
-      ['likes'],
-      "readwrite"
-      );
-    const likesStore = transaction.objectStore("likes");
-    
-    // Add data
-    likesStore.add(
-      { restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address }
-      );
+    const transaction = db.transaction(['likes'],"readwrite")
+    .objectStore("likes")
+    .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
     // Clean up: close connection
     transaction.oncomplete = () => {
       db.close();
     };
+    transaction.onerror = () => {
+      console.log('err');
+    }
   };
   request.onerror = () => {
     alert('fail');
