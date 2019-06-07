@@ -17,22 +17,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-window.addEventListener('beforeinstallprompt', function(event) {
-  console.log('beforeinstallprompt fired');
-  event.preventDefault();
-  deferredPrompt = event;
-  return false;
-});
-
-document.getElementById("search-text").addEventListener("keyup", function(event) {
-  // Number 13 is the "Enter" key on the keyboard
-  if (event.keyCode === 13) {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Trigger the button element with a click
-    document.getElementById("search-button").click();
-  }
-});
 
 if (!window.indexedDB) {
   window.alert("Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.");
@@ -95,10 +79,12 @@ function add(rest_id, rest_name, rest_cuisine, rest_address){
 }
 
 function get(){
+  var return_arr = [];
   var objectStore = db.transaction("saved_places").objectStore("saved_places");
   objectStore.openCursor().onsuccess = function(event){
     var cursor = event.target.result;
     if(cursor){
+      return_arr.push(cursor.value);
       console.log(cursor.key + ":" + cursor.value.restaurant_name);
       cursor.continue();
     }
@@ -106,26 +92,6 @@ function get(){
       console.log('done all data.');
     }
   }
+  return return_arr;
 }
 
-$(function(){
-  $('.ui.modal').modal({
-    onPositive : function(){
-      return false; 
-    }
-  });
-  $('#save-button').click(function(){
-    var rest_id = window.localStorage.getItem('idRest');
-    var rest_name = $('#detail-title').html();
-    var rest_cuisine = $('#detail-cuisine').html();
-    var rest_address = $('#detail-address').html();
-    add(rest_id, rest_name, rest_cuisine, rest_address);
-    console.log('save finished');
-    get();
-    });
-  $('#search-button').click(function(){
-    var search_query = $('#search-text').val();
-    search(search_query);
-    console.log('searched');
-  })
-});

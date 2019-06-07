@@ -19,7 +19,7 @@
   crossorigin="anonymous"></script>
   <script src="semantic/dist/semantic.min.js"></script>
   <link rel="manifest" href="/manifest.json">
-    
+
 </head>
 <body>
 
@@ -28,7 +28,7 @@
       <h4>Cari Makan Yuk!</h4>
     </div>
     <div class="right menu">
-      <a class="item">
+      <a class="item" href="save.html">
         Likes
       </a>
     </div>
@@ -42,53 +42,53 @@
     <div class="content">
       <div class="ui fluid icon input">
         <input type="text" placeholder="Search..." label="search" id="search-text">
-       
+
         <button class="ui icon button" name="btnSearch" role="button" aria-label="btn" id="search-button">
          <i class="search icon"></i>
-      </button>
-      </div>
-    </div>
-  </div>
+       </button>
+     </div>
+   </div>
+ </div>
 
-  <div class="ui modal" id="modal-detail">
-    <i class="close icon"></i>
-    <div class="header" id="detail-title">
-      
+ <div class="ui modal" id="modal-detail">
+  <i class="close icon"></i>
+  <div class="header" id="detail-title">
+
+  </div>
+  <div class="image scrolling content">
+    <div class="ui medium image">
+      <img src="" id="detail-image">
     </div>
-    <div class="image scrolling content">
-      <div class="ui medium image">
-        <img src="" id="detail-image">
-      </div>
-      <div class="description">
-        <div class="ui header" style="font-family: 'Dosis', sans-serif;">Restaurant Detail : </div>
-        <table class="ui very basic table">
-            <tbody>
-              <tr>
-                <td>Cuisine</td>
-                <td id="detail-cuisine"></td>
-              </tr>
-              <tr>
-                <td>Address</td>
-                <td id="detail-address"></td>
-              </tr>
-              <tr>
-               <td>Rating</td>
-                <td id="detail-rating"></td>
-              </tr>
-              <tr>
-               <td>Average Cost</td>
-                <td id="detail-average"></td>
-              </tr>
-               <tr>
-               <td>Online Delivery</td>
-                <td id="detail-delivery"></td>
-              </tr>
-               <tr>
-               <td>Table Booking</td>
-                <td id="detail-booking"></td>
-              </tr>
-            </tbody>
-          </table>
+    <div class="description">
+      <div class="ui header" style="font-family: 'Dosis', sans-serif;">Restaurant Detail : </div>
+      <table class="ui very basic table">
+        <tbody>
+          <tr>
+            <td>Cuisine</td>
+            <td id="detail-cuisine"></td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td id="detail-address"></td>
+          </tr>
+          <tr>
+           <td>Rating</td>
+           <td id="detail-rating"></td>
+         </tr>
+         <tr>
+           <td>Average Cost</td>
+           <td id="detail-average"></td>
+         </tr>
+         <tr>
+           <td>Online Delivery</td>
+           <td id="detail-delivery"></td>
+         </tr>
+         <tr>
+           <td>Table Booking</td>
+           <td id="detail-booking"></td>
+         </tr>
+       </tbody>
+     </table>
       <!--   <p id="detail-address"></p>
         <p id="detail-rating"></p>
         <p id="detail-average"></p> -->
@@ -112,5 +112,46 @@
   <script src="/src/js/fetch.js"></script>
   <script src="/src/js/app.js"></script>
   <script src="/src/js/feed.js"></script>
+  <script>
+
+    window.addEventListener('beforeinstallprompt', function(event) {
+      console.log('beforeinstallprompt fired');
+      event.preventDefault();
+      deferredPrompt = event;
+      return false;
+    });
+
+    document.getElementById("search-text").addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("search-button").click();
+  }
+});
+    $(function(){
+      fetch_all();
+      $('.ui.modal').modal({
+        onPositive : function(){
+          return false; 
+        }
+      });
+      $('#save-button').click(function(){
+        var rest_id = window.localStorage.getItem('idRest');
+        var rest_name = $('#detail-title').html();
+        var rest_cuisine = $('#detail-cuisine').html();
+        var rest_address = $('#detail-address').html();
+        add(rest_id, rest_name, rest_cuisine, rest_address);
+        console.log('save finished');
+        get();
+      });
+      $('#search-button').click(function(){
+        var search_query = $('#search-text').val();
+        search(search_query);
+        console.log('searched');
+      })
+    });
+  </script>
 </body>
 </html>
