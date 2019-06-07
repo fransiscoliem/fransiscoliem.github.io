@@ -50,9 +50,11 @@ function clearCards() {
 
 
 function fillModal(event){
-  event.preventDefault();
   var x = this.getAttribute("idRest");
   alert(x);
+
+  event.preventDefault();
+  return false;
 }
 
 function createCards(data){
@@ -115,7 +117,8 @@ function createCards(data){
     var x = document.getElementsByClassName("cardMain");
       console.log(x.length);
     for(var i=0; i<x.length;i++){
-      x[i].addEventListener('touchstart', fillModal, false);
+      x[i].addEventListener('touchend', fillModal, false);
+      x[i].addEventListener('mouseup', fillModal, false);
     }
     return;
   }
