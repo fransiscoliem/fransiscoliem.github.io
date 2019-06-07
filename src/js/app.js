@@ -23,3 +23,8 @@ window.addEventListener('beforeinstallprompt', function(event) {
   return false;
 });
 
+$(function(){
+  document.getElementsByClassName("cardMain").addEventListener('touchstart', function(e){
+    alert('aa');
+  });
+});
