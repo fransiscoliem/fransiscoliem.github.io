@@ -147,6 +147,7 @@ function createCards(data){
     textRating.textContent = " | " + dataEach['user_rating']['aggregate_rating'];
     // var spaceEnter = document.createElement('br');
     cardRating.className = "ui star rating";
+    cardRating.setAttribute("data-max-rating", 5);
 
     // cardRating.setAttribute("data-rating",  Math.floor(dataEach['user_rating']['aggregate_rating'] * 10) / 10);
     cardRating.setAttribute("data-rating",  Math.floor(dataEach['user_rating']['aggregate_rating']));
@@ -165,9 +166,7 @@ function createCards(data){
   sharedMomentsArea.appendChild(cardWrapper);
 
   if(count++ >= 15){
-    $(".rating").rating('disable', {
-      maxRating: 5
-    });
+    $(".rating").rating('disable');
 
     var x = document.getElementsByClassName("cardMain");
     console.log(x.length);
