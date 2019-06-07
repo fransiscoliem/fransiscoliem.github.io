@@ -249,7 +249,7 @@ function fetch_saved(){
   console.log('this before fetch save')
   console.log(saved_arr);
   clearCardsSaved();
-  saved_arr.forEach(function(val){
+  Object.keys(saved_arr).forEach(function(value){
     console.log(val);
     var url_rest = "https://developers.zomato.com/api/v2.1/restaurant?res_id=" + val['restaurant_id'];
     fetch(url_rest,{
