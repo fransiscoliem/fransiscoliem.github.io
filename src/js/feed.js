@@ -88,6 +88,18 @@ function fillModal(event){
     $('#detail-cuisine').html(data['cuisines']);
     $('#detail-rating').html(data['user_rating']['aggregate_rating'] + '/5.0');
     $('#detail-average').html(data['average_cost_for_two'] + " " + data['currency'] + " (average cost for two people)");
+    if(data['has_online_delivery'] == 0){
+      $('#detail-delivery').html("Yes");
+    }
+    else{
+      $('#detail-delivery').html("No");
+    }
+     if(data['has_table_booking'] == 0){
+      $('#detail-booking').html("Yes");
+    }
+    else{
+      $('#detail-booking').html("No");
+    }
 
     
   });
