@@ -1,4 +1,5 @@
 
+
 var deferredPrompt;
 
 if (!window.Promise) {
@@ -22,7 +23,19 @@ window.addEventListener('beforeinstallprompt', function(event) {
   deferredPrompt = event;
   return false;
 });
+ //prefixes of implementation that we want to test
+ window.indexedDB = window.indexedDB || window.mozIndexedDB || 
+ window.webkitIndexedDB || window.msIndexedDB;
 
+ //prefixes of window.IDB objects
+ window.IDBTransaction = window.IDBTransaction || 
+ window.webkitIDBTransaction || window.msIDBTransaction;
+ window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || 
+ window.msIDBKeyRange
+ 
+ if (!window.indexedDB) {
+  window.alert("Your browser doesn't support a stable version of IndexedDB.")
+}
 var request = window.indexedDB.open("database", 1);
 var db;
 // Create schema
@@ -42,7 +55,7 @@ request.onsuccess = event => {
 
 function save_database(id, name, cuisine, address){
   console.log(id + name + cuisine + address);
-  var reqAdd = db.transaction(['likes'],"readwrite")
+  var reqAdd = db.transaction(["likes"],"readwrite")
   .objectStore("likes")
   .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
     // Clean up: close connection
