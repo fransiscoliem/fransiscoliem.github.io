@@ -109,8 +109,8 @@ function get(){
     }
     else{
       console.log('done all data.');
+      return return_arr;
     }
   }
-  return return_arr;
 }
 
