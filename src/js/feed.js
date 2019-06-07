@@ -67,7 +67,7 @@ function clearCards() {
 //         Close
 //       </div>
 
-function fillModal(event){
+function fillModal(){
   var x = this.getAttribute("idRest");
   window.localStorage.setItem('idRest', x);
   alert(x);
@@ -108,7 +108,7 @@ function fillModal(event){
 
   $('.ui.modal').modal('show');
 
-  event.preventDefault();
+  // event.preventDefault();
   return false;
 }
 
