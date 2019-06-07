@@ -94,7 +94,7 @@ function add(rest_id, rest_name, rest_cuisine, rest_address){
 }
 
 function get(){
-  
+
 }
 
 function clearCards() {
@@ -381,7 +381,7 @@ function fetch_saved(){
           $('.cardMain').on('touchend', function(e){
             var obj_pressed = $(this);
             if(touchmoved != true){
-              fillModal(obj_pressed);
+              fillModalSave(obj_pressed);
             }
           }).on('touchmove', function(e){
             touchmoved = true;
