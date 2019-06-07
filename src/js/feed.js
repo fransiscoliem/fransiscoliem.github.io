@@ -48,10 +48,50 @@ function clearCards() {
   }
 }
 
+// <div class="header" id="detail-title">
+
+//     </div>
+//     <div class="image content">
+//       <div class="ui medium image">
+//         <img src="" id="detail-image">
+//       </div>
+//       <div class="description">
+//         <div class="ui header" id="detail-cuisine"></div>
+//         <p id="detail-address"></p>
+//         <p id="detail-rating"></p>
+//         <p id="detail-average"></p>
+//       </div>
+//     </div>
+//     <div class="actions">
+//       <div class="ui black deny button">
+//         Close
+//       </div>
 
 function fillModal(event){
   var x = this.getAttribute("idRest");
   alert(x);
+  var url_search = "https://developers.zomato.com/api/v2.1/restaurant?res_id="+x;
+  fetch(url_search,{
+    method:'GET',
+    headers:{
+      'Content-Type' : 'application/json',
+      'user-key' : 'c98ef0400af4c8206ae32b844b5b7cd6'
+    }
+  })
+  .then(function(res) {
+    return res.json();
+  })
+  .then(function(data) {
+    $('#detail-title').html(data['name']);
+    $('#detail-image').attr('src', data['featured_image']);
+    $('#detail-cuisine').html(data['cuisines']);
+    $('#detail-rating').html(data['user_rating']['aggregate_rating'] + '/5.0');
+    $('#detail-average').html(data['average_cost_for_two'] + " " + data['currency'] + " (average cost for two people)");
+
+    
+  });
+
+  $('.ui.modal').modal('show');
 
   event.preventDefault();
   return false;
@@ -115,7 +155,7 @@ function createCards(data){
     });
 
     var x = document.getElementsByClassName("cardMain");
-      console.log(x.length);
+    console.log(x.length);
     for(var i=0; i<x.length;i++){
       x[i].addEventListener('touchend', fillModal);
       x[i].addEventListener('mouseup', fillModal, false);

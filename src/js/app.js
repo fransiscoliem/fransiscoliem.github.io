@@ -25,5 +25,4 @@ window.addEventListener('beforeinstallprompt', function(event) {
 
 $(function(){
   $('.ui.modal').modal();
-  $('.ui.modal').modal('show');
 });
