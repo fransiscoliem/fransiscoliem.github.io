@@ -68,7 +68,7 @@ if (!window.indexedDB) {
 };
 }
 
-function add(id, name, cuisine, address){
+function add(rest_id, rest_name, rest_cuisine, rest_address){
   var transaction = db.transaction(["saved_places"], "readwrite");
   // Do something when all the data is added to the database.
   transaction.oncomplete = function(event) {
@@ -80,7 +80,13 @@ function add(id, name, cuisine, address){
   };
 
   var objectStore = transaction.objectStore("saved_places");
-  var request = objectStore.add({ restaurant_id: 10, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
+  var add_data = {
+    restaurant_id:10,
+    restaurant_name:rest_name,
+    restaurant_cuisine:rest_cuisine,
+    restaurant_address:rest_address,
+  };
+  var request = objectStore.add(add_data);
   request.onsuccess = function(event) {
     console.log('data added with key : ' + event.target.result);
   };
