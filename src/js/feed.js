@@ -103,7 +103,7 @@ function createCards(data){
     });
     var x = document.getElementsByClassName("cardMain");
     for(var i=0; i<x.length;i++){
-      x[i].addEventListener('touchstart', fillModal(x[i].getAttribute("idRest")), false);
+      x[i].addEventListener('click', fillModal(x[i].getAttribute("idRest")), false);
     }
     return;
   }
