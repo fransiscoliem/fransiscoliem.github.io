@@ -87,7 +87,14 @@ function save_database(id, name, cuisine, address){
     //       </table> 
 
 $(function(){
-  $('.ui.modal').modal();
+  $('.ui.modal').modal({
+    onDeny : function(){
+      return false;
+    },
+    onPositive : function(){
+      return false; 
+    }
+  });
   $('#save-button').click(function(){
     var rest_id = window.localStorage.getItem('idRest');
     var rest_name = $('#detail-title').html();
