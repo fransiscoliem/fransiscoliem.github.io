@@ -98,7 +98,7 @@ function createCards(data){
   sharedMomentsArea.appendChild(cardWrapper);
 
   if(count++ >= 15){
-    $(".rating").rating();
+    $(".rating").rating('disable');
     return;
   }
 
