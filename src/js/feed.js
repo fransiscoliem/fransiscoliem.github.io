@@ -132,6 +132,7 @@ function search(query){
 
 function createCards(data){
   var count = 0;
+  var length = data.length;
   data.forEach(function(rest){
     dataEach = rest['restaurant'];
     var cardWrapper = document.createElement('div');
@@ -183,8 +184,20 @@ function createCards(data){
   cardWrapper.appendChild(cardSupportingText);
   sharedMomentsArea.appendChild(cardWrapper);
 
-  //if(count++ >= 29){
+  if(++count >= length){
+    console.log('stopped');
+    $(".rating").rating('disable');
 
+    $('.cardMain').on('touchend', function(e){
+      var obj_pressed = $(this);
+      if(touchmoved != true){
+        fillModal(obj_pressed);
+      }
+    }).on('touchmove', function(e){
+      touchmoved = true;
+    }).on('touchstart', function(){
+      touchmoved = false;
+    });
 
     // var x = document.getElementsByClassName("cardMain");
     // console.log(x.length);
@@ -192,7 +205,7 @@ function createCards(data){
     //   x[i].addEventListener('touchend', fillModal);
     //   x[i].addEventListener('mouseup', fillModal, false);
     // }
-  //}
+  }
 
 });
 }
@@ -230,18 +243,6 @@ if ('caches' in window) {
     if (!networkDataReceived) {
       clearCards();
       createCards(data['restaurants']);
-      $(".rating").rating('disable');
-
-      $('.cardMain').on('touchend', function(e){
-        var obj_pressed = $(this);
-        if(touchmoved != true){
-          fillModal(obj_pressed);
-        }
-      }).on('touchmove', function(e){
-        touchmoved = true;
-      }).on('touchstart', function(){
-        touchmoved = false;
-      });
     }
   });
 }
