@@ -68,7 +68,7 @@ function add(rest_id, rest_name, rest_cuisine, rest_address){
     console.log(db);
   };
 
-  var transaction = db.transaction(["saved_places"], window.webkitIDBTransaction.READ_WRITE);
+  var transaction = db.transaction(["saved_places"], "readwrite");
 
   var objectStore = transaction.objectStore("saved_places");
   var add_data = {
@@ -145,6 +145,7 @@ function fillModal(obj){
     }
     $('#modal-detail')
     .modal({observeChanges: true})
+    .modal('refresh')
     .modal('show'); 
     // $('#modal-detail').modal('refresh'); 
   });
@@ -186,6 +187,7 @@ function fillModalSave(obj){
     }
     $('#modal-detail-save')
     .modal({observeChanges: true})
+    .modal('refresh')
     .modal('show'); 
     // $('#modal-detail-save').modal('refresh');  
   });
@@ -351,52 +353,51 @@ function fetch_saved(){
     db = event.target.result;
     console.log('database fetched in get.');
     console.log(db);
-  };
 
-  var saved_arr = [];
-  var objectStore = db.transaction("saved_places").objectStore("saved_places");
-  objectStore.openCursor().onsuccess = function(event){
-    var cursor = event.target.result;
-    if(cursor){
-      saved_arr.push(cursor.value);
-      cursor.continue();
-    }
-    else{
-      console.log('done all data.');
-      console.log(saved_arr);
-      clearCardsSaved();
-      saved_arr.forEach(function(val){
-        console.log(val);
-        var url_rest = "https://developers.zomato.com/api/v2.1/restaurant?res_id=" + val['restaurant_id'];
-        fetch(url_rest,{
-          method:'GET',
-          headers:{
-            'Content-Type' : 'application/json',
-            'user-key' : 'c98ef0400af4c8206ae32b844b5b7cd6'
-          }
-        })
-        .then(function(res) {
-          return res.json();
-        })
-        .then(function(data) {
-          createCard(data);
-          $(".rating").rating('disable');
-
-          $('.cardMain').on('touchend', function(e){
-            var obj_pressed = $(this);
-            if(touchmoved != true){
-              fillModalSave(obj_pressed);
+    var saved_arr = [];
+    var objectStore = db.transaction("saved_places").objectStore("saved_places");
+    objectStore.openCursor().onsuccess = function(event){
+      var cursor = event.target.result;
+      if(cursor){
+        saved_arr.push(cursor.value);
+        cursor.continue();
+      }
+      else{
+        console.log('done all data.');
+        console.log(saved_arr);
+        clearCardsSaved();
+        saved_arr.forEach(function(val){
+          console.log(val);
+          var url_rest = "https://developers.zomato.com/api/v2.1/restaurant?res_id=" + val['restaurant_id'];
+          fetch(url_rest,{
+            method:'GET',
+            headers:{
+              'Content-Type' : 'application/json',
+              'user-key' : 'c98ef0400af4c8206ae32b844b5b7cd6'
             }
-          }).on('touchmove', function(e){
-            touchmoved = true;
-          }).on('touchstart', function(){
-            touchmoved = false;
+          })
+          .then(function(res) {
+            return res.json();
+          })
+          .then(function(data) {
+            createCard(data);
+            $(".rating").rating('disable');
+
+            $('.cardMain').on('touchend', function(e){
+              var obj_pressed = $(this);
+              if(touchmoved != true){
+                fillModalSave(obj_pressed);
+              }
+            }).on('touchmove', function(e){
+              touchmoved = true;
+            }).on('touchstart', function(){
+              touchmoved = false;
+            });
           });
         });
-      });
+      }
     }
-  }
-  
+  }; 
 }
 
 var url = 'https://developers.zomato.com/api/v2.1/search?entity_id=74&entity_type=city&count=30';
