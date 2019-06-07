@@ -112,6 +112,7 @@ $(function(){
     var rest_address = $('#detail-address').html();
     add(rest_id, rest_name, rest_cuisine, rest_address);
     console.log('save finished');
+    get();
     });
   $('#search-button').click(function(){
     var search_query = $('#search-text').val();
