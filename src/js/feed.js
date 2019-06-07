@@ -48,6 +48,11 @@ function clearCards() {
   }
 }
 
+
+function fillModal(idRest){
+  alert(idRest);
+}
+
 function createCards(data){
   var count = 0;
   data.forEach(function(rest){
@@ -106,7 +111,7 @@ function createCards(data){
     });
     var x = document.getElementsByClassName("cardMain");
     for(var i=0; i<x.length;i++){
-      x[i].addEventListener('click', fillModal(x[i].getAttribute("idRest")), false);
+      x[i].addEventListener('touchstart', fillModal(x[i].getAttribute("idRest")));
     }
     return;
   }
@@ -114,9 +119,6 @@ function createCards(data){
 });
 }
 
-function fillModal(idRest){
-  alert(idRest);
-}
 
 var url = 'https://developers.zomato.com/api/v2.1/search?entity_id=74&entity_type=city';
 var networkDataReceived = false;
