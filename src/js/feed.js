@@ -185,7 +185,7 @@ function createCards(data){
   cardWrapper.appendChild(cardSupportingText);
   sharedMomentsArea.appendChild(cardWrapper);
 
-  if(count++ >= 29){
+  //if(count++ >= 29){
     $(".rating").rating('disable');
     
     $('.cardMain').on('touchend', function(e){
@@ -204,8 +204,7 @@ function createCards(data){
     //   x[i].addEventListener('touchend', fillModal);
     //   x[i].addEventListener('mouseup', fillModal, false);
     // }
-    return;
-  }
+  //}
 
 });
 }
