@@ -246,6 +246,7 @@ function createCards(data){
 
 function fetch_saved(){
   var saved_arr = get();
+  console.log('this before fetch save')
   console.log(saved_arr);
   clearCardsSaved();
   saved_arr.forEach(function(val){

@@ -59,10 +59,10 @@ function add(rest_id, rest_name, rest_cuisine, rest_address){
   };
   request.onsuccess = function(event) {
     db = event.target.result;
-    console.log('database fetched.');
+    console.log('database fetched in add.');
     console.log(db);
   };
-  
+
   var transaction = db.transaction(["saved_places"], "readwrite");
 
   var objectStore = transaction.objectStore("saved_places");
@@ -95,7 +95,7 @@ function get(){
   };
   request.onsuccess = function(event) {
     db = event.target.result;
-    console.log('database fetched.');
+    console.log('database fetched in get.');
     console.log(db);
   };
 
