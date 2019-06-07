@@ -78,23 +78,7 @@
        //     alert("Unable to add data\r\nKenny is aready exist in your database! ");
        //   }
        // }
-       function save_database() {
-          var id = window.localStorage.getItem('idRest');
-          var cuisine = document.getElementById("detail-cuisine");
-          var name = document.getElementById("detail-title");
-          var address = document.getElementById("detail-address");
-          var request = db.transaction(["likes"], "readwrite")
-          .objectStore("likes")
-          .add({ restaurant_id: id, restaurant_name: name.value, restaurant_cuisine: cuisine.value, restaurant_address: address.value });
-
-          request.onsuccess = function(event) {
-           alert(name.value+" has been added to your database.");
-         };
-
-         request.onerror = function(event) {
-           alert("Unable to add data\r\nKenny is aready exist in your database! ");
-         }
-       }
+       
 
   </script>
 </head>
@@ -190,5 +174,25 @@
   <script src="/src/js/fetch.js"></script>
   <script src="/src/js/app.js"></script>
   <script src="/src/js/feed.js"></script>
+  <script>
+    function save_database() {
+          var id = window.localStorage.getItem('idRest');
+          var cuisine = document.getElementById("detail-cuisine");
+          var name = document.getElementById("detail-title");
+          var address = document.getElementById("detail-address");
+          var request = db.transaction(["likes"], "readwrite")
+          .objectStore("likes")
+          .add({ restaurant_id: id, restaurant_name: name.value, restaurant_cuisine: cuisine.value, restaurant_address: address.value });
+
+          request.onsuccess = function(event) {
+           alert(name.value+" has been added to your database.");
+           console.log(id + name.value + cuisine.value + address.value);
+         };
+
+         request.onerror = function(event) {
+           alert("Unable to add data\r\nKenny is aready exist in your database! ");
+         }
+       }
+  </script>
 </body>
 </html>
