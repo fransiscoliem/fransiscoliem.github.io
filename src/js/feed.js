@@ -207,8 +207,10 @@ function createCards(data){
 
 function fetch_saved(){
   var saved_arr = get();
+  console.log(saved_arr);
   clearCardsSaved();
   saved_arr.forEach(function(val){
+    console.log(val);
     var url_rest = "https://developers.zomato.com/api/v2.1/restaurant?res_id=" + val['restaurant_id'];
     fetch(url,{
       method:'GET',

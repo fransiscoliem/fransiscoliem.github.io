@@ -69,7 +69,7 @@ function add(rest_id, rest_name, rest_cuisine, rest_address){
   // Do something when all the data is added to the database.
   
   transaction.oncomplete = function(event) {
-    alert("db fetched");
+    console.log("db fetched");
   };
 
   transaction.onerror = function(event) {
