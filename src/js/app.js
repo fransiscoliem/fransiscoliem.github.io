@@ -1,5 +1,6 @@
 var deferredPrompt;
 var db;
+var restaurant_data = [];
 
 if (!window.Promise) {
   window.Promise = Promise;
@@ -79,7 +80,7 @@ function add(id, name, cuisine, address){
   };
 
   var objectStore = transaction.objectStore("saved_places");
-  var request = objectStore.add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
+  var request = objectStore.add({ restaurant_id: 10, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
   request.onsuccess = function(event) {
     console.log('data added with key : ' + event.target.result);
   };
