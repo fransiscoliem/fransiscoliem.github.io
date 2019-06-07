@@ -54,5 +54,6 @@ document.getElementById("search-text").addEventListener("keyup", function(event)
       $('#search-button').click(function(){
         var search_query = $('#search-text').val();
         search(search_query);
+        console.log('searched');
       })
     });
