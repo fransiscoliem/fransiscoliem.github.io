@@ -144,7 +144,6 @@ function fillModal(obj){
       $('#detail-booking').html("No");
     }
     $('#modal-detail')
-    .modal({observeChanges: true})
     .modal('refresh')
     .modal('show'); 
     // $('#modal-detail').modal('refresh'); 
@@ -186,7 +185,6 @@ function fillModalSave(obj){
       $('#detail-booking-save').html("No");
     }
     $('#modal-detail-save')
-    .modal({observeChanges: true})
     .modal('refresh')
     .modal('show'); 
     // $('#modal-detail-save').modal('refresh');  
