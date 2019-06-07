@@ -68,21 +68,30 @@ function createCards(data){
     cardTitleTextElement.textContent = dataEach['name'];
     cardTitle.appendChild(cardTitleTextElement);
     var cardSupportingText = document.createElement('div');
-    var cardCity = document.createElement('div');
-    cardCity.className = 'cityName';
-    cardCity.textContent = dataEach['location']['city'];
+
+    var cardAddr = document.createElement('div');
+    var cardPhone = document.createElement('div');
+    cardAddr.className = 'cityName';
+    cardAddr.textContent = data['location']['address'];
+    cardPhone.className = 'phoneName';
+    cardPhone.textContent = data['phone_numbers'];
+    var cardWrapRating = document.createElement('div');
+    cardWrapRating.className = "ratingWrap";
+
     var cardRating = document.createElement('div');
+    cardWrapRating.textContent = data['user_rating']['aggregate_rating'] + "<br>";
     cardRating.className = "ui star rating";
-    cardRating.style.backgroundColor = "red";
-    cardRating.setAttribute("data-rating",  3);
+    cardRating.setAttribute("data-rating",  data['user_rating']['aggregate_rating']);
     // cardSupportingText.textContent = data['location']['city'] + " | " + data['user_rating']['aggregate_rating'] + " stars";
     cardSupportingText.style.textAlign = 'center';
   // var cardSaveButton = document.createElement('button');
   // cardSaveButton.textContent = 'Save';
   // cardSaveButton.addEventListener('click', onSaveButtonClicked);
   // cardSupportingText.appendChild(cardSaveButton);
-  cardSupportingText.appendChild(cardCity);
-  cardSupportingText.appendChild(cardRating);
+  cardWrapRating.appendChild(cardRating);
+  cardSupportingText.appendChild(cardAddr);
+  cardSupportingText.appendChild(cardPhone);
+  cardSupportingText.appendChild(cardWrapRating);
   cardWrapper.appendChild(cardSupportingText);
   sharedMomentsArea.appendChild(cardWrapper);
 
