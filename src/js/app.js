@@ -52,7 +52,7 @@ window.addEventListener('beforeinstallprompt', function(event) {
 
         request.onupgradeneeded = function(event) {
           var db = event.target.result;
-          var objectStore = db.createObjectStore("likes", {keyPath: "restaurant_id"});
+          var objectStore = db.createObjectStore("likes", {keyPath: "id", autoIncrement: true});
 
          //  for (var i in employeeData) {
          //   objectStore.add(employeeData[i]);
