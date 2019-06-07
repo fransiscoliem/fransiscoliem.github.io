@@ -24,84 +24,69 @@ window.addEventListener('beforeinstallprompt', function(event) {
   return false;
 });
  //prefixes of implementation that we want to test
- window.indexedDB = window.indexedDB || window.mozIndexedDB || 
- window.webkitIndexedDB || window.msIndexedDB;
+         window.indexedDB = window.indexedDB || window.mozIndexedDB || 
+         window.webkitIndexedDB || window.msIndexedDB;
+         
+         //prefixes of window.IDB objects
+         window.IDBTransaction = window.IDBTransaction || 
+         window.webkitIDBTransaction || window.msIDBTransaction;
+         window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || 
+         window.msIDBKeyRange
+         
+         if (!window.indexedDB) {
+          window.alert("Your browser doesn't support a stable version of IndexedDB.")
+        }
 
- //prefixes of window.IDB objects
- window.IDBTransaction = window.IDBTransaction || 
- window.webkitIDBTransaction || window.msIDBTransaction;
- window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || 
- window.msIDBKeyRange
- 
- if (!window.indexedDB) {
-  window.alert("Your browser doesn't support a stable version of IndexedDB.")
-}
-var request = window.indexedDB.open("database", 1);
-var db;
-// Create schema
-request.onupgradeneeded = event => {
-  const db_create = event.target.result;
+        const employeeData = [];
+        var db;
+        var request = window.indexedDB.open("database", 1);
 
-  const likes_store = db_create.createObjectStore(
-    "likes",
-    { keyPath: ["restaurant_id"] }
-    );  
-  console.log('db created : ' + db_create);
-};
-request.onsuccess = event => {
-  db = request.result;
-  console.log('db opened : ' + db);
-};
+        request.onerror = function(event) {
+          console.log("error: ");
+        };
 
-function save_database(id, name, cuisine, address){
-  console.log(id + name + cuisine + address);
-  var reqAdd = db.transaction("likes","readwrite")
-  .objectStore("likes")
-  .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
-    // Clean up: close connection
-    reqAdd.onsuccess = () => {
-      console.log('suc');
-    };
-    reqAdd.oncomplete = () => {
-      alert('com');
-    };
-    reqAdd.onerror = () => {
-      console.log('err');
-    };
-    reqAdd.onabort = () => {
-      console.log('ab');
-    };
-  }
+        request.onsuccess = function(event) {
+          db = request.result;
+          console.log("success: "+ db);
+        };
 
-    // <div class="ui header">Restauran Detail : </div>
-    //     <table class="ui very basic table">
-    //         <tbody>
-    //           <tr>
-    //             <td>Cuisine</td>
-    //             <td id="detail-cuisine"></td>
-    //           </tr>
-    //           <tr>
-    //             <td>Address</td>
-    //             <td id="detail-address"></td>
-    //           </tr>
-    //           <tr>
-    //            <td>Rating</td>
-    //             <td id="detail-rating"></td>
-    //           </tr>
-    //           <tr>
-    //            <td>Average Cost</td>
-    //             <td id="detail-average"></td>
-    //           </tr>
-    //            <tr>
-    //            <td>Online Delivery</td>
-    //             <td id="detail-delivery"></td>
-    //           </tr>
-    //            <tr>
-    //            <td>Table Booking</td>
-    //             <td id="detail-booking"></td>
-    //           </tr>
-    //         </tbody>
-    //       </table> 
+        request.onupgradeneeded = function(event) {
+          var db = event.target.result;
+          var objectStore = db.createObjectStore("likes", {keyPath: "restaurant_id"});
+
+         //  for (var i in employeeData) {
+         //   objectStore.add(employeeData[i]);
+         // }
+       }
+
+          function readAll() {
+            var objectStore = db.transaction("employee").objectStore("employee");
+            
+            objectStore.openCursor().onsuccess = function(event) {
+             var cursor = event.target.result;
+
+             if (cursor) {
+              alert("Name for id " + cursor.key + " is " + cursor.value.name + ", Age: " + cursor.value.age + ", Email: " + cursor.value.email);
+              cursor.continue();
+            } else {
+              alert("No more entries!");
+            }
+          };
+        }
+
+        function save_database(id, name, cuisine, address) {
+         var request = db.transaction(["likes"], "readwrite")
+          .objectStore("likes")
+          .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
+
+          request.onsuccess = function(event) {
+           alert(name.value+" has been added to your database.");
+         };
+
+         request.onerror = function(event) {
+           alert("Unable to add data\r\nKenny is aready exist in your database! ");
+         }
+       }
 
     $(function(){
       $('.ui.modal').modal({
