@@ -42,20 +42,20 @@ request.onsuccess = event => {
 
 function save_database(id, name, cuisine, address){
   console.log(id + name + cuisine + address);
-  var transaction = db.transaction(['likes'],"readwrite")
+  var reqAdd = db.transaction(['likes'],"readwrite")
   .objectStore("likes")
-  .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address }, id);
+  .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
     // Clean up: close connection
-    transaction.onsuccess = () => {
+    reqAdd.onsuccess = () => {
       console.log('suc');
     };
-    transaction.oncomplete = () => {
+    reqAdd.oncomplete = () => {
       alert('com');
     };
-    transaction.onerror = () => {
+    reqAdd.onerror = () => {
       console.log('err');
     };
-    transaction.onabort = () => {
+    reqAdd.onabort = () => {
       console.log('ab');
     };
   }
@@ -105,5 +105,6 @@ function save_database(id, name, cuisine, address){
         var rest_cuisine = $('#detail-cuisine').html();
         var rest_address = $('#detail-address').html();
         save_database(rest_id, rest_name, rest_cuisine, rest_address);
+        console.log('save finished');
       });
     });
