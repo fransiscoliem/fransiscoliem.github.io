@@ -80,7 +80,7 @@ window.addEventListener('beforeinstallprompt', function(event) {
           .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
 
           request.onsuccess = function(event) {
-           alert(name.value+" has been added to your database.");
+           alert(name+" has been added to your database.");
          };
 
          request.onerror = function(event) {
