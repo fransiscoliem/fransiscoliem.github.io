@@ -51,7 +51,7 @@ function clearCards() {
 
 function fillModal(){
   var x = this.getAttribute("idRest");
-  alert(x);
+  console.log(x);
 }
 
 function createCards(data){
