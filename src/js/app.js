@@ -50,18 +50,18 @@ if (!window.indexedDB) {
     // Save the IDBDatabase interface 
     db = event.target.result;
 
-    // restaurantData = [
-    // { restaurant_id: 1, restaurant_name: "Res1", restaurant_cuisine: "cui1", restaurant_address: "add1" },
-    // { restaurant_id: 2, restaurant_name: "Res2", restaurant_cuisine: "cui2", restaurant_address: "add2" },
-    // ];
+    const restaurantData = [
+    { restaurant_id: 1, restaurant_name: "Res1", restaurant_cuisine: "cui1", restaurant_address: "add1" },
+    { restaurant_id: 2, restaurant_name: "Res2", restaurant_cuisine: "cui2", restaurant_address: "add2" },
+    ];
     // Create an objectStore for this database
     var objectStore = db.createObjectStore("saved_places", { keyPath: "restaurant_id" });
     objectStore.transaction.oncomplete = function(event) {
     // Store values in the newly created objectStore.
-    // var savedObjectStore = db.transaction("saved_places", "readwrite").objectStore("saved_places");
-    // restaurantData.forEach(function(rest) {
-    //   savedObjectStore.add(rest);
-    // });
+    var savedObjectStore = db.transaction("saved_places", "readwrite").objectStore("saved_places");
+    restaurantData.forEach(function(rest) {
+      savedObjectStore.add(rest);
+    });
     console.log('db created and added');
     console.log(db);
   };
@@ -81,7 +81,7 @@ function add(rest_id, rest_name, rest_cuisine, rest_address){
 
   var objectStore = transaction.objectStore("saved_places");
   var add_data = {
-    restaurant_id:rest_id,
+    restaurant_id:10,
     restaurant_name:rest_name,
     restaurant_cuisine:rest_cuisine,
     restaurant_address:rest_address,
