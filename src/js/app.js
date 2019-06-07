@@ -55,7 +55,8 @@ if (!window.indexedDB) {
     { restaurant_id: 2, restaurant_name: "Res2", restaurant_cuisine: "cui2", restaurant_address: "add2" },
     ];
     // Create an objectStore for this database
-    var objectStore = db.createObjectStore("saved_places", { keyPath: "restaurant_id" });
+    var objectStore = db.createObjectStore("saved_places", { autoIncrement : true });
+    objectStore.createIndex("restaurant_id", "restaurant_id", {unique: true});
     objectStore.transaction.oncomplete = function(event) {
     // Store values in the newly created objectStore.
     // var savedObjectStore = db.transaction("saved_places", "readwrite").objectStore("saved_places");
