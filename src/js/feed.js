@@ -82,7 +82,7 @@ function createCards(data){
     cardWrapRating.textContent = dataEach['user_rating']['aggregate_rating'];
     var spaceEnter = document.createElement('br');
     cardRating.className = "ui star rating";
-    cardRating.setAttribute("data-rating",  Math.floor(dataEach['user_rating']['aggregate_rating']));
+    cardRating.setAttribute("data-rating",  Math.floor(dataEach['user_rating']['aggregate_rating'] * 10) / 10);
     // cardSupportingText.textContent = data['location']['city'] + " | " + data['user_rating']['aggregate_rating'] + " stars";
     cardSupportingText.style.textAlign = 'center';
   // var cardSaveButton = document.createElement('button');
