@@ -49,7 +49,8 @@ function clearCards() {
 }
 
 
-function fillModal(){
+function fillModal(event){
+  event.preventDefault();
   var x = this.getAttribute("idRest");
   alert(x);
 }
@@ -114,7 +115,7 @@ function createCards(data){
     var x = document.getElementsByClassName("cardMain");
       console.log(x.length);
     for(var i=0; i<x.length;i++){
-      x[i].addEventListener('touchstart', fillModal);
+      x[i].addEventListener('touchstart', fillModal, false);
     }
     return;
   }
