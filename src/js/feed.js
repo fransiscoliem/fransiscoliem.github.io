@@ -113,8 +113,8 @@ function fillModal(event){
 }
 
 function search(query){
+  query = encodeURIComponent(query.trim())
   var url_search = "https://developers.zomato.com/api/v2.1/search?entity_id=74&entity_type=city&q="+query+"&count=30";
-  url_search = encodeURIComponent(url_search.trim())
   fetch(url_search,{
     method:'GET',
     headers:{
