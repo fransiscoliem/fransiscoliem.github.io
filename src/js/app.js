@@ -36,6 +36,8 @@ request.onupgradeneeded = event => {
 
 function save_database(id, name, cuisine, address){
   const request = window.indexedDB.open("database", 1);
+  
+    console.log(id + name + cuisine + address);
   request.onsuccess = () => {
     const db = request.result;
     const transaction = db.transaction(
@@ -51,9 +53,10 @@ function save_database(id, name, cuisine, address){
     // Clean up: close connection
     transaction.oncomplete = () => {
       db.close();
-      alert('Liked!');
     };
   };
+
+  request.
 }
 
     // <div class="ui header">Restauran Detail : </div>
