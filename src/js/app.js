@@ -42,4 +42,8 @@ window.addEventListener('beforeinstallprompt', function(event) {
         save_database();
         console.log('save finished');
       });
+      $('#search-button').click(function(){
+        var search_query = $('#search-text').val();
+        search(search_query);
+      })
     });

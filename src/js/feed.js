@@ -112,6 +112,25 @@ function fillModal(event){
   return false;
 }
 
+function search(query){
+  var url_search = "https://developers.zomato.com/api/v2.1/search?entity_id=74&entity_type=city&q="+query+"&count=30";
+  fetch(url_search,{
+    method:'GET',
+    headers:{
+      'Content-Type' : 'application/json',
+      'user-key' : 'c98ef0400af4c8206ae32b844b5b7cd6'
+    }
+  })
+  .then(function(res) {
+    return res.json();
+  })
+  .then(function(data) {
+    clearCards();
+    createCards(data);
+  });
+
+}
+
 function createCards(data){
   var count = 0;
   data.forEach(function(rest){
