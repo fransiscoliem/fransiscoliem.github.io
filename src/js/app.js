@@ -35,9 +35,6 @@ document.getElementById("search-text").addEventListener("keyup", function(event)
 });
     $(function(){
       $('.ui.modal').modal({
-        onDeny : function(){
-          return false;
-        },
         onPositive : function(){
           return false; 
         }

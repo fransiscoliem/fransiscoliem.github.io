@@ -70,7 +70,6 @@ function clearCards() {
 function fillModal(obj){
   var x = obj.attr("idrest");
   window.localStorage.setItem('idRest', x);
-  alert(x);
   var url_search = "https://developers.zomato.com/api/v2.1/restaurant?res_id="+x;
   fetch(url_search,{
     method:'GET',
@@ -105,9 +104,6 @@ function fillModal(obj){
   });
 
   $('.ui.modal').modal('show');
-
-  // event.preventDefault();
-  return false;
 }
 
 function search(query){
