@@ -55,7 +55,7 @@ request.onsuccess = event => {
 
 function save_database(id, name, cuisine, address){
   console.log(id + name + cuisine + address);
-  var reqAdd = db.transaction(["likes"],"readwrite")
+  var reqAdd = db.transaction("likes","readwrite")
   .objectStore("likes")
   .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
     // Clean up: close connection
