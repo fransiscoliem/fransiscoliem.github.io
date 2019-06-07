@@ -74,13 +74,30 @@ window.addEventListener('beforeinstallprompt', function(event) {
           };
         }
 
-        function save_database(id, name, cuisine, address) {
-         var request = db.transaction(["likes"], "readwrite")
-          .objectStore("likes")
-          .put({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
+       //  function save_database(id, name, cuisine, address) {
+       //   var request = db.transaction(["likes"], "readwrite")
+       //    .objectStore("likes")
+       //    .put({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
+
+       //    request.onsuccess = function(event) {
+       //     alert(name+" has been added to your database.");
+       //   };
+
+       //   request.onerror = function(event) {
+       //     alert("Unable to add data\r\nKenny is aready exist in your database! ");
+       //   }
+       // }
+       function save_database() {
+          var id = window.localStorage.getItem('idRest');
+          var cuisine = document.getElementById("detail-cuisine");
+          var name = document.getElementById("detail-title");
+          var address = document.getElementById("detail-address");
+          var request = db.transaction(["likes"], "readwrite")
+          .objectStore("employee")
+          .add({ restaurant_id: id, restaurant_name: name.value, restaurant_cuisine: cuisine.value, restaurant_address: address.value });
 
           request.onsuccess = function(event) {
-           alert(name+" has been added to your database.");
+           alert(name.value+" has been added to your database.");
          };
 
          request.onerror = function(event) {
@@ -102,7 +119,8 @@ window.addEventListener('beforeinstallprompt', function(event) {
         var rest_name = $('#detail-title').html();
         var rest_cuisine = $('#detail-cuisine').html();
         var rest_address = $('#detail-address').html();
-        save_database(rest_id, rest_name, rest_cuisine, rest_address);
+        // save_database(rest_id, rest_name, rest_cuisine, rest_address);
+        save_database();
         console.log('save finished');
       });
     });
