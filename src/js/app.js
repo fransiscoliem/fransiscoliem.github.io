@@ -56,7 +56,6 @@ if (!window.indexedDB) {
     ];
     // Create an objectStore for this database
     var objectStore = db.createObjectStore("saved_places", { autoIncrement : true });
-    objectStore.createIndex("restaurant_id", "restaurant_id", {unique: true});
     objectStore.transaction.oncomplete = function(event) {
     // Store values in the newly created objectStore.
     // var savedObjectStore = db.transaction("saved_places", "readwrite").objectStore("saved_places");
