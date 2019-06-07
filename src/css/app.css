@@ -16,13 +16,25 @@ body {
   padding : calc(4px + 0.5vw);
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 25px;
-  font-family: "Merriweather", serif;
+  font-family: 'Merriweather', serif;
 }
 
 .cityName {
-	font-size: calc(12px + 0.5vw);
+	font-size: calc(13px + 0.25vw);
+	padding-top: calc(8px + 0.5vw);
+	font-family: 'Merriweather', serif;
+}
+
+.phoneName {
+	font-size: calc(11px + 0.25vw);
 	padding-top: calc(3px + 0.5vw);
-	font-family: "Merriweather";
+	font-family: 'Merriweather', serif;
+}
+
+.ratingWrap {
+	font-size:  calc(10px + 0.25vw);
+	padding-top: calc(3px + 0.5vw);
+	font-family: 'Merriweather', serif;
 }
 
 .cardMain {
