@@ -36,11 +36,14 @@ request.onupgradeneeded = event => {
 
 function save_database(id, name, cuisine, address){
   console.log(id + name + cuisine + address);
-    const db = request.result;
-    const transaction = db.transaction(['likes'],"readwrite")
-    .objectStore("likes")
-    .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
+  var db = request.result;
+  var transaction = db.transaction(['likes'],"readwrite")
+  .objectStore("likes")
+  .add({ restaurant_id: id, restaurant_name: name, restaurant_cuisine: cuisine, restaurant_address: address });
     // Clean up: close connection
+    transaction.onsuccess = () => {
+      console.log('suc');
+    };
     transaction.oncomplete = () => {
       alert('com');
       db.close();
@@ -50,8 +53,8 @@ function save_database(id, name, cuisine, address){
     };
     transaction.onabort = () => {
       console.log('ab');
-    }
-}
+    };
+  }
 
     // <div class="ui header">Restauran Detail : </div>
     //     <table class="ui very basic table">
