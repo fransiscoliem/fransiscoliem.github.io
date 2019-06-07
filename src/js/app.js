@@ -70,14 +70,6 @@ if (!window.indexedDB) {
 
 function add(rest_id, rest_name, rest_cuisine, rest_address){
   var transaction = db.transaction(["saved_places"], "readwrite");
-  // Do something when all the data is added to the database.
-  transaction.oncomplete = function(event) {
-    alert("db fetched");
-  };
-
-  transaction.onerror = function(event) {
-    alert('db fetch error');
-  };
 
   var objectStore = transaction.objectStore("saved_places");
   var add_data = {
@@ -90,6 +82,16 @@ function add(rest_id, rest_name, rest_cuisine, rest_address){
   request.onsuccess = function(event) {
     console.log('data added with key : ' + event.target.result);
   };
+  // Do something when all the data is added to the database.
+  
+  transaction.oncomplete = function(event) {
+    alert("db fetched");
+  };
+
+  transaction.onerror = function(event) {
+    alert('db fetch error');
+  };
+
 }
 
 function get(){
