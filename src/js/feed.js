@@ -99,6 +99,10 @@ function createCards(data){
 
   if(count++ >= 15){
     $(".rating").rating('disable');
+    var x = document.getElementsByClassName("cardMain");
+    x.addEventListener('touchstart', function(e){
+      alert('aa');
+    });
     return;
   }
 
