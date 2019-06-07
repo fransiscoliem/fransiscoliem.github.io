@@ -23,7 +23,7 @@ window.addEventListener('beforeinstallprompt', function(event) {
   return false;
 });
 
-const request = window.indexedDB.open("database", 1);
+var request = window.indexedDB.open("database", 1);
 // Create schema
 request.onupgradeneeded = event => {
   const db = event.target.result;
