@@ -101,8 +101,8 @@ function fillModal(obj){
     else{
       $('#detail-booking').html("No");
     }
-    $('.ui.modal').modal('show');
-    $('#modal-detail').modal('refresh');  
+    $('#modal-detail').modal('refresh'); 
+    $('#modal-detail').modal('show'); 
   });
 
 }

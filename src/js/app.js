@@ -110,10 +110,9 @@ $(function(){
     var rest_name = $('#detail-title').html();
     var rest_cuisine = $('#detail-cuisine').html();
     var rest_address = $('#detail-address').html();
-        // save_database(rest_id, rest_name, rest_cuisine, rest_address);
-        save_database();
-        console.log('save finished');
-      });
+    add(rest_id, rest_name, rest_cuisine, rest_address);
+    console.log('save finished');
+    });
   $('#search-button').click(function(){
     var search_query = $('#search-text').val();
     search(search_query);
