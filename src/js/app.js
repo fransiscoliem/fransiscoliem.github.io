@@ -30,9 +30,9 @@ request.onupgradeneeded = event => {
     
     const likes_store = db.createObjectStore(
         "likes",
-        { keyPath: "restaurant_id", "row" }
+        { keyPath: ["restaurant_id", "row"] }
     );
-    fileStore.createIndex("LikesIndex", "row");    
+    likes_store.createIndex("LikesIndex", "row");    
 };
 
 $(function(){
