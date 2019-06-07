@@ -118,8 +118,12 @@ function createCards(data){
   cardSupportingText.appendChild(cardWrapRating);
   cardWrapper.appendChild(cardSupportingText);
   sharedMomentsArea.appendChild(cardWrapper);
-  if(count++ >= 15)
+
+  if(count++ >= 15){
+    $(".rating").rating();
     return;
+  }
+
 });
 }
 
