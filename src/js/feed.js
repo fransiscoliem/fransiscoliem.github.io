@@ -117,7 +117,7 @@ function createCards(data){
     var x = document.getElementsByClassName("cardMain");
       console.log(x.length);
     for(var i=0; i<x.length;i++){
-      x[i].addEventListener('touchend', fillModal, false);
+      x[i].addEventListener('touchend', fillModal);
       x[i].addEventListener('mouseup', fillModal, false);
     }
     return;
