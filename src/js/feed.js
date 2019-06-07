@@ -79,8 +79,9 @@ function createCards(data){
     cardWrapRating.className = "ratingWrap";
 
     var cardRating = document.createElement('div');
-    cardWrapRating.textContent = dataEach['user_rating']['aggregate_rating'];
-    var spaceEnter = document.createElement('br');
+    var textRating = document.createElement('span');
+    textRating.textContent = dataEach['user_rating']['aggregate_rating'];
+    // var spaceEnter = document.createElement('br');
     cardRating.className = "ui star rating";
     cardRating.setAttribute("data-rating",  Math.floor(dataEach['user_rating']['aggregate_rating'] * 10) / 10);
     // cardSupportingText.textContent = data['location']['city'] + " | " + data['user_rating']['aggregate_rating'] + " stars";
@@ -89,8 +90,8 @@ function createCards(data){
   // cardSaveButton.textContent = 'Save';
   // cardSaveButton.addEventListener('click', onSaveButtonClicked);
   // cardSupportingText.appendChild(cardSaveButton);
-  cardWrapRating.appendChild(spaceEnter);
   cardWrapRating.appendChild(cardRating);
+  cardWrapRating.appendChild(textRating);
   cardSupportingText.appendChild(cardAddr);
   cardSupportingText.appendChild(cardPhone);
   cardSupportingText.appendChild(cardWrapRating);
