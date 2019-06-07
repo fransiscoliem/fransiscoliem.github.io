@@ -100,10 +100,11 @@ function fillModal(obj){
     }
     else{
       $('#detail-booking').html("No");
-    }  
+    }
+    $('.ui.modal').modal('show');
+    $('#modal-detail').modal('refresh');  
   });
 
-  $('.ui.modal').modal('show');
 }
 
 function search(query){
