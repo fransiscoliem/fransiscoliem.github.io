@@ -67,8 +67,8 @@ function clearCards() {
 //         Close
 //       </div>
 
-function fillModal(){
-  var x = $(this).attr("idrest");
+function fillModal(obj){
+  var x = obj.attr("idrest");
   window.localStorage.setItem('idRest', x);
   alert(x);
   var url_search = "https://developers.zomato.com/api/v2.1/restaurant?res_id="+x;
@@ -184,17 +184,7 @@ function createCards(data){
   sharedMomentsArea.appendChild(cardWrapper);
 
   //if(count++ >= 29){
-    $(".rating").rating('disable');
-    
-    $('.cardMain').on('touchend', function(e){
-      if(touchmoved != true){
-        fillModal();
-      }
-    }).on('touchmove', function(e){
-      touchmoved = true;
-    }).on('touchstart', function(){
-      touchmoved = false;
-    });
+
 
     // var x = document.getElementsByClassName("cardMain");
     // console.log(x.length);
@@ -240,6 +230,18 @@ if ('caches' in window) {
     if (!networkDataReceived) {
       clearCards();
       createCards(data['restaurants']);
+      $(".rating").rating('disable');
+
+      $('.cardMain').on('touchend', function(e){
+        var obj_pressed = $(this);
+        if(touchmoved != true){
+          fillModal(obj_pressed);
+        }
+      }).on('touchmove', function(e){
+        touchmoved = true;
+      }).on('touchstart', function(){
+        touchmoved = false;
+      });
     }
   });
 }
