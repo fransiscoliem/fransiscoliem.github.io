@@ -132,11 +132,6 @@
 });
     $(function(){
       fetch_all();
-      $('.ui.modal').modal({
-        onPositive : function(){
-          return false; 
-        }
-      });
       $('#save-button').click(function(){
         var rest_id = window.localStorage.getItem('idRest');
         var rest_name = $('#detail-title').html();
