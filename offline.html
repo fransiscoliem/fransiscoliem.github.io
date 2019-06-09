@@ -27,7 +27,7 @@
     <div class="center aligned item">
       <h4>Cari Makan Yuk!</h4>
     </div>
-    <div class="right menu">
+    <div class="right aligned item">
       Offline
     </div>
     <!-- <div class="ui fluid action input">
@@ -39,61 +39,7 @@
   <div class="ui text container">
     You seem to be (unfortunately) offline. You can still check your saved places, they are just not as good as when you are online, sorry :(
   </div>
-  <div class="ui modal" id="modal-detail">
-    <i class="close icon"></i>
-    <div class="header" id="detail-title">
-
-    </div>
-    <div class="image scrolling content">
-      <div class="ui medium image">
-        <img src="" id="detail-image">
-      </div>
-      <div class="description">
-        <div class="ui header" style="font-family: 'Dosis', sans-serif;">Restaurant Detail : </div>
-        <table class="ui very basic table">
-          <tbody>
-            <tr>
-              <td>Cuisine</td>
-              <td id="detail-cuisine"></td>
-            </tr>
-            <tr>
-              <td>Address</td>
-              <td id="detail-address"></td>
-            </tr>
-            <tr>
-             <td>Rating</td>
-             <td id="detail-rating"></td>
-           </tr>
-           <tr>
-             <td>Average Cost</td>
-             <td id="detail-average"></td>
-           </tr>
-           <tr>
-             <td>Online Delivery</td>
-             <td id="detail-delivery"></td>
-           </tr>
-           <tr>
-             <td>Table Booking</td>
-             <td id="detail-booking"></td>
-           </tr>
-         </tbody>
-       </table>
-      <!--   <p id="detail-address"></p>
-        <p id="detail-rating"></p>
-        <p id="detail-average"></p> -->
-      </div>
-    </div>
-    <div class="actions">
-      <div class="ui black deny button">
-        Close
-      </div>
-      <div class="ui positive right labeled icon button" id="save-button">
-        Save
-        <i class="save icon"></i>
-      </div>
-    </div>
-  </div>
-
+  <div class="ui container">
   <table class="ui single line table">
     <thead>
       <tr>
@@ -106,6 +52,7 @@
 
     </tbody>
   </table>
+</div>
   <script>
     $(function(){
       var request = window.indexedDB.open("SavestaurantDB", 1);
