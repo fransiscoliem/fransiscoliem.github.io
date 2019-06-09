@@ -19,7 +19,7 @@
   crossorigin="anonymous"></script>
   <script src="semantic/dist/semantic.min.js"></script>
   <link rel="manifest" href="/manifest.json">
-    
+
 </head>
 <body>
 
@@ -43,7 +43,7 @@
   <div class="ui modal" id="modal-detail-save">
     <i class="close icon"></i>
     <div class="header" id="detail-title-save">
-      
+
     </div>
     <div class="image scrolling content">
       <div class="ui medium image">
@@ -52,36 +52,45 @@
       <div class="description">
         <div class="ui header" style="font-family: 'Dosis', sans-serif;">Restaurant Detail : </div>
         <table class="ui very basic table">
-            <tbody>
-              <tr>
-                <td>Cuisine</td>
-                <td id="detail-cuisine-save"></td>
-              </tr>
-              <tr>
-                <td>Address</td>
-                <td id="detail-address-save"></td>
-              </tr>
-              <tr>
-               <td>Rating</td>
-                <td id="detail-rating-save"></td>
-              </tr>
-              <tr>
-               <td>Average Cost</td>
-                <td id="detail-average-save"></td>
-              </tr>
-               <tr>
-               <td>Online Delivery</td>
-                <td id="detail-delivery-save"></td>
-              </tr>
-               <tr>
-               <td>Table Booking</td>
-                <td id="detail-booking-save"></td>
-              </tr>
-            </tbody>
-          </table>
+          <tbody>
+            <tr>
+              <td>Cuisine</td>
+              <td id="detail-cuisine-save"></td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td id="detail-address-save"></td>
+            </tr>
+            <tr>
+             <td>Rating</td>
+             <td id="detail-rating-save"></td>
+           </tr>
+           <tr>
+             <td>Average Cost</td>
+             <td id="detail-average-save"></td>
+           </tr>
+           <tr>
+             <td>Online Delivery</td>
+             <td id="detail-delivery-save"></td>
+           </tr>
+           <tr>
+             <td>Table Booking</td>
+             <td id="detail-booking-save"></td>
+           </tr>
+         </tbody>
+       </table>
       <!--   <p id="detail-address"></p>
         <p id="detail-rating"></p>
         <p id="detail-average"></p> -->
+      </div>
+      <div class="actions">
+        <div class="ui black deny button">
+          Close
+        </div>
+        <div class="ui negative right labeled icon button" id="delete-button">
+          Delete
+          <i class="trash icon"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -96,11 +105,12 @@
   <script>
     $(function(){
       fetch_saved();
-      $('.ui.modal').modal({
-        onPositive : function(){
-          return false; 
-        }
-      });
+      $('.ui.modal').modal();
+
+      $('#delete-button').click(function(){
+        delete_saved(rest_id);
+        fetch_saved();
+      })
     });
   </script>
 </body>

@@ -44,7 +44,7 @@ if (!window.indexedDB) {
     { restaurant_id: 2, restaurant_name: "Res2", restaurant_cuisine: "cui2", restaurant_address: "add2" },
     ];
     // Create an objectStore for this database
-    var objectStore = db.createObjectStore("saved_places", { autoIncrement : true });
+    var objectStore = db.createObjectStore("saved_places", { keyPath : "restaurant_id" });
     objectStore.transaction.oncomplete = function(event) {
     // Store values in the newly created objectStore.
     // var savedObjectStore = db.transaction("saved_places", "readwrite").objectStore("saved_places");
@@ -93,8 +93,33 @@ function add(rest_id, rest_name, rest_cuisine, rest_address){
 
 }
 
-function get(){
+function delete_saved(rest_id){
+  var request = window.indexedDB.open("SavestaurantDB", 1);
+  request.onerror = function(event) {
+    console.log(request.errorCode);
+  };
+  request.onsuccess = function(event) {
+    db = event.target.result;
+    console.log('database fetched in delete.');
+    console.log(db);
+  };
 
+  var transaction = db.transaction(["saved_places"], "readwrite");
+
+  var objectStore = transaction.objectStore("saved_places");
+  var request = objectStore.delete(rest_id);
+  request.onsuccess = function(event) {
+    console.log('data deleted with key : ' + rest_id);
+  };
+  // Do something when all the data is added to the database.
+  
+  transaction.oncomplete = function(event) {
+    console.log("db fetched");
+  };
+
+  transaction.onerror = function(event) {
+    alert('db fetch error');
+  };
 }
 
 function clearCards() {
