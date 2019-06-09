@@ -83,7 +83,8 @@
         <p id="detail-rating"></p>
         <p id="detail-average"></p> -->
       </div>
-      <div class="actions">
+    </div>
+    <div class="actions">
         <div class="ui black deny button">
           Close
         </div>
@@ -92,7 +93,6 @@
           <i class="trash icon"></i>
         </div>
       </div>
-    </div>
   </div>
 
   <div class="flex-container" id="places-save">
@@ -108,6 +108,7 @@
       $('.ui.modal').modal();
 
       $('#delete-button').click(function(){
+        var rest_id = window.localStorage.getItem('idRest');
         delete_saved(rest_id);
         fetch_saved();
       })
