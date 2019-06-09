@@ -10,9 +10,13 @@ self.addEventListener('install', function (event) {
         cache.addAll([
           '/',
           '/offline.html',
-          '/src/js/app.js',
+          'https://fonts.googleapis.com/css?family=Antic|Questrial&display=swap',
+          'https://fonts.googleapis.com/css?family=Dosis|Libre+Franklin&display=swap',
+          '/semantic/dist/semantic.min.css',
+          'https://fonts.googleapis.com/css?family=Merriweather&display=swap',
           '/src/css/app.css',
-          '/src/css/feed.css',
+          'https://code.jquery.com/jquery-3.1.1.min.js',
+          '/semantic/dist/semantic.min.js',
           '/manifest.json',
         ]);
       })
