@@ -8,7 +8,6 @@ self.addEventListener('install', function (event) {
       .then(function (cache) {
         console.log('[Service Worker] Precaching App Shell');
         cache.addAll([
-          '/',
           '/offline.html',
           'https://fonts.googleapis.com/css?family=Antic|Questrial&display=swap',
           'https://fonts.googleapis.com/css?family=Dosis|Libre+Franklin&display=swap',
@@ -18,6 +17,7 @@ self.addEventListener('install', function (event) {
           'https://code.jquery.com/jquery-3.1.1.min.js',
           '/semantic/dist/semantic.min.js',
           '/manifest.json',
+          
         ]);
       })
   )
