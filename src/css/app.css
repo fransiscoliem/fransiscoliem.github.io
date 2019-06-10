@@ -5,11 +5,11 @@
 .drawer-option {
 	padding: 16px;
 }
-
 	
 body {  
-  
+  font-display:swap;
 }
+
 .placeName {
   font-size: calc(11px + 0.25vw);
   margin-top : (3px + 0.5vw);
