@@ -37,25 +37,14 @@
   </div>
   <br>
   <div class="ui icon message">
-  <div class="ui text container">
-    <div class="content">
-    You seem to be (unfortunately) offline. You can still check your saved places, they are just not as good as when you are online, sorry :(
+    <div class="ui text container">
+      <div class="content">
+        You seem to be (unfortunately) offline. You can still check your saved places, they are just not as good as when you are online, sorry :(
+      </div>
     </div>
   </div>
-</div>
-  <div class="ui container">
-  <table class="ui single line table unstackable">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Cuisine</th>
-        <th>Address</th>
-      </tr>
-    </thead>
-    <tbody id="places-table-area">
-
-    </tbody>
-  </table>
+  <div class="ui container" id="table-area">
+  
 </div>
   <script>
     $(function(){
@@ -82,11 +71,11 @@
             $('#places-table-area').html("");
             saved_arr.forEach(function(val){
               console.log(val);
-              var add_table = "<tr>";
-              add_table += "<td>" + val['restaurant_name'] + "</td>";
-              add_table += "<td>" + val['restaurant_cuisine'] + "</td>";
-              add_table += "<td>" + val['restaurant_address'] + "</td>";
-              add_table += "</tr>";
+              var add_table = "<table class='ui single line table unstackable'><tr>";
+              add_table += "<td>Name </td><td>" + val['restaurant_name'] + "</td></tr><tr>";
+              add_table += "<td>Cuisine </td><td>" + val['restaurant_cuisine'] + "</td></tr><tr>";
+              add_table += "<td>Address </td><td>" + val['restaurant_address'] + "</td>";
+              add_table += "</tr></table>";
 
               $('#places-table-area').append(add_table);
             });
