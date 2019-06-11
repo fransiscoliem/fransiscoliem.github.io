@@ -356,6 +356,7 @@ function createCards(data){
     }).on('touchstart', function(){
       touchmoved = false;
     }).on('click', function(e){
+      var obj_pressed = $(this);
       fillModal(obj_pressed);
     });
 
@@ -419,6 +420,7 @@ function fetch_saved(){
             }).on('touchstart', function(){
               touchmoved = false;
             }).on('click', function(e){
+              var obj_pressed = $(this);
               fillModalSave(obj_pressed);
             });
           });
