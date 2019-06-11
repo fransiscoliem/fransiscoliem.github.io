@@ -345,6 +345,7 @@ function createCards(data){
     console.log('stopped');
     $(".rating").rating('disable');
 
+
     $('.cardMain').on('touchend', function(e){
       var obj_pressed = $(this);
       if(touchmoved != true){
@@ -354,6 +355,8 @@ function createCards(data){
       touchmoved = true;
     }).on('touchstart', function(){
       touchmoved = false;
+    }).on('click', function(e){
+      fillModal(obj_pressed);
     });
 
     // var x = document.getElementsByClassName("cardMain");
@@ -415,6 +418,8 @@ function fetch_saved(){
               touchmoved = true;
             }).on('touchstart', function(){
               touchmoved = false;
+            }).on('click', function(e){
+              fillModalSave(obj_pressed);
             });
           });
         });
