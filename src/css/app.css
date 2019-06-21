@@ -2,10 +2,6 @@
 	text-align: center;
 }
 
-.barCari{
-	padding-top: 30px;
-}
-
 .drawer-option {
 	padding: 16px;
 }
@@ -48,6 +44,10 @@ body {
 	width: calc(300px + 5vw);
 	/*height: calc(280px + 5vw);*/
 	height: auto;
+}
+
+.barCari{
+	padding-top: 30px;
 }
 
 .flex-container {
