@@ -50,6 +50,10 @@ body {
 	padding-top: 50px;
 }
 
+.headTitle{
+	padding-top: 30px;
+}
+
 .flex-container {
   display: flex;
   justify-content: center;
